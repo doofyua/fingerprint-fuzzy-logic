@@ -1,9 +1,0 @@
-D:\Source\diplom\Fuzzy1\CUDAFingerprinting.ImageEnhancement.LinearSymmetry\obj\Debug\CUDAFingerprinting.ImageEnhancement.LinearSymmetry.csprojResolveAssemblyReference.cache
-D:\Source\diplom\Fuzzy1\CUDAFingerprinting.ImageEnhancement.LinearSymmetry\bin\Debug\CUDAFingerprinting.ImageEnhancement.LinearSymmetry.dll
-D:\Source\diplom\Fuzzy1\CUDAFingerprinting.ImageEnhancement.LinearSymmetry\bin\Debug\CUDAFingerprinting.ImageEnhancement.LinearSymmetry.pdb
-D:\Source\diplom\Fuzzy1\CUDAFingerprinting.ImageEnhancement.LinearSymmetry\bin\Debug\CUDAFingerprinting.Common.ComplexFilters.dll
-D:\Source\diplom\Fuzzy1\CUDAFingerprinting.ImageEnhancement.LinearSymmetry\bin\Debug\CUDAFingerprinting.Common.dll
-D:\Source\diplom\Fuzzy1\CUDAFingerprinting.ImageEnhancement.LinearSymmetry\bin\Debug\CUDAFingerprinting.Common.ComplexFilters.pdb
-D:\Source\diplom\Fuzzy1\CUDAFingerprinting.ImageEnhancement.LinearSymmetry\bin\Debug\CUDAFingerprinting.Common.pdb
-D:\Source\diplom\Fuzzy1\CUDAFingerprinting.ImageEnhancement.LinearSymmetry\obj\Debug\CUDAFingerprinting.ImageEnhancement.LinearSymmetry.dll
-D:\Source\diplom\Fuzzy1\CUDAFingerprinting.ImageEnhancement.LinearSymmetry\obj\Debug\CUDAFingerprinting.ImageEnhancement.LinearSymmetry.pdb
