@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fuzzy1", "Fuzzy1\Fuzzy1.csproj", "{4FDDAD70-6552-42CA-85AA-C5F638967A29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUDAFingerprinting.Common", "CUDAFingerprinting.Common\CUDAFingerprinting.Common.csproj", "{6FD094CC-0F63-47BD-A377-F054AE615517}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUDAFingerprinting.Common.OrientationField", "CUDAFingerprinting.Common.OrientationField\CUDAFingerprinting.Common.OrientationField.csproj", "{5EEC4BD2-E1B0-4794-948A-45732CD41F99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUDAFingerprinting.Common.Segmentation", "CUDAFingerprinting.Common.Segmentation\CUDAFingerprinting.Common.Segmentation.csproj", "{6BEF775C-E400-4EA6-A220-15BE47B27148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUDAFingerprinting.ImageEnhancement.LinearSymmetry", "CUDAFingerprinting.ImageEnhancement.LinearSymmetry\CUDAFingerprinting.ImageEnhancement.LinearSymmetry.csproj", "{83EBBA4F-41BD-4103-92DA-8923AEC11EFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUDAFingerprinting.TemplateBuilding.Minutiae.BinarizationThinning", "CUDAFingerprinting.TemplateBuilding.Minutiae.BinarizationThinking\CUDAFingerprinting.TemplateBuilding.Minutiae.BinarizationThinning.csproj", "{74B7C604-38C8-475D-AD0E-0A5D1519FEC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CUDAFingerprinting.Common.ComplexFilters", "CUDAFingerprinting.Common.ComplexFilters\CUDAFingerprinting.Common.ComplexFilters.csproj", "{9CBC91CE-0EE7-4A78-A5F5-89EA40023F52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nfiq", "Nfiq\Nfiq.csproj", "{25990EFF-D739-47AF-A880-6878A8313410}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FDDAD70-6552-42CA-85AA-C5F638967A29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FDDAD70-6552-42CA-85AA-C5F638967A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FDDAD70-6552-42CA-85AA-C5F638967A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FDDAD70-6552-42CA-85AA-C5F638967A29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FD094CC-0F63-47BD-A377-F054AE615517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD094CC-0F63-47BD-A377-F054AE615517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD094CC-0F63-47BD-A377-F054AE615517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD094CC-0F63-47BD-A377-F054AE615517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EEC4BD2-E1B0-4794-948A-45732CD41F99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EEC4BD2-E1B0-4794-948A-45732CD41F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EEC4BD2-E1B0-4794-948A-45732CD41F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EEC4BD2-E1B0-4794-948A-45732CD41F99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BEF775C-E400-4EA6-A220-15BE47B27148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BEF775C-E400-4EA6-A220-15BE47B27148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BEF775C-E400-4EA6-A220-15BE47B27148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BEF775C-E400-4EA6-A220-15BE47B27148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83EBBA4F-41BD-4103-92DA-8923AEC11EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83EBBA4F-41BD-4103-92DA-8923AEC11EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83EBBA4F-41BD-4103-92DA-8923AEC11EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83EBBA4F-41BD-4103-92DA-8923AEC11EFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B7C604-38C8-475D-AD0E-0A5D1519FEC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B7C604-38C8-475D-AD0E-0A5D1519FEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B7C604-38C8-475D-AD0E-0A5D1519FEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B7C604-38C8-475D-AD0E-0A5D1519FEC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CBC91CE-0EE7-4A78-A5F5-89EA40023F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CBC91CE-0EE7-4A78-A5F5-89EA40023F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CBC91CE-0EE7-4A78-A5F5-89EA40023F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CBC91CE-0EE7-4A78-A5F5-89EA40023F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25990EFF-D739-47AF-A880-6878A8313410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25990EFF-D739-47AF-A880-6878A8313410}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25990EFF-D739-47AF-A880-6878A8313410}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25990EFF-D739-47AF-A880-6878A8313410}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

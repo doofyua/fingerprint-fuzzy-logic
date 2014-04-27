@@ -1,0 +1,14 @@
+D:\Source\cuda-fingerprinting\CUDAFingerprinting.Common.OrientationField\bin\Debug\CUDAFingerprinting.OrientationField.dll
+D:\Source\cuda-fingerprinting\CUDAFingerprinting.Common.OrientationField\bin\Debug\CUDAFingerprinting.OrientationField.pdb
+D:\Source\cuda-fingerprinting\CUDAFingerprinting.Common.OrientationField\bin\Debug\CUDAFingerprinting.Common.dll
+D:\Source\cuda-fingerprinting\CUDAFingerprinting.Common.OrientationField\bin\Debug\CUDAFingerprinting.Common.pdb
+D:\Source\cuda-fingerprinting\CUDAFingerprinting.Common.OrientationField\obj\Debug\CUDAFingerprinting.Common.OrientationField.csprojResolveAssemblyReference.cache
+D:\Source\cuda-fingerprinting\CUDAFingerprinting.Common.OrientationField\obj\Debug\CUDAFingerprinting.OrientationField.dll
+D:\Source\cuda-fingerprinting\CUDAFingerprinting.Common.OrientationField\obj\Debug\CUDAFingerprinting.OrientationField.pdb
+D:\Source\diplom\Fuzzy1\CUDAFingerprinting.Common.OrientationField\bin\Debug\CUDAFingerprinting.OrientationField.dll
+D:\Source\diplom\Fuzzy1\CUDAFingerprinting.Common.OrientationField\bin\Debug\CUDAFingerprinting.OrientationField.pdb
+D:\Source\diplom\Fuzzy1\CUDAFingerprinting.Common.OrientationField\bin\Debug\CUDAFingerprinting.Common.dll
+D:\Source\diplom\Fuzzy1\CUDAFingerprinting.Common.OrientationField\bin\Debug\CUDAFingerprinting.Common.pdb
+D:\Source\diplom\Fuzzy1\CUDAFingerprinting.Common.OrientationField\obj\Debug\CUDAFingerprinting.Common.OrientationField.csprojResolveAssemblyReference.cache
+D:\Source\diplom\Fuzzy1\CUDAFingerprinting.Common.OrientationField\obj\Debug\CUDAFingerprinting.OrientationField.dll
+D:\Source\diplom\Fuzzy1\CUDAFingerprinting.Common.OrientationField\obj\Debug\CUDAFingerprinting.OrientationField.pdb

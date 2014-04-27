@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<MccMatchParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <MuP>30</MuP>
+  <TauP>0.4</TauP>
+  <MinNP>10</MinNP>
+  <MaxNP>20</MaxNP>
+  <GlobalScoreMethod>LGS</GlobalScoreMethod>
+  <NormalizeLocalSimilarityMatrix>false</NormalizeLocalSimilarityMatrix>
+  <MaxNR>-1</MaxNR>
+</MccMatchParameters>
