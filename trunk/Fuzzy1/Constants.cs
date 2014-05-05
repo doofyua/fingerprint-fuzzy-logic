@@ -16,6 +16,9 @@ namespace Fuzzy1
     public const int OrFieldWindowSize = 16;
     public const int OrFieldOverlap = 0;
 
+    public const string PathToQualityRules = @"../../QualityRules.txt";
+    public const string PathToFingerprintRules = @"../../FingerprintRules.txt";
+    public const string PathToAnswerRules = @"../../AnswerRules.txt";
 
   }
 }

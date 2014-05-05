@@ -14,15 +14,28 @@ namespace Fuzzy1
   internal class DecisionMaker
   {
 
-    List<LingValue> existingValues = new List<LingValue>();
+    List<LingValue> existingValuesQuality = new List<LingValue>();
+    List<LingValue> existingValuesFingerprint = new List<LingValue>();
+    List<LingValue> existingValuesAnswer = new List<LingValue>();
+
+
     List<Rule> UsedRules = new List<Rule>();
 
-    private List<Rule> rules;
+    private List<Rule> qualityRules;
+    private List<Rule> fingerprintRules;
+    private List<Rule> answerRules;
+
+    private void ParseRules()
+    {
+      qualityRules = RuleParser.Parse(Constants.PathToQualityRules);
+      fingerprintRules = RuleParser.Parse(Constants.PathToFingerprintRules);
+      answerRules = RuleParser.Parse(Constants.PathToAnswerRules);
+    }
+
     //TODO:
     internal LingValue GetAnswer(double mccAnswer, double qualityAnswer)
     {
-
-      rules = new List<Rule>();
+      ParseRules();
 
       bool isChanged = true;
 
@@ -44,6 +57,8 @@ namespace Fuzzy1
 
     }
 
+    
+
     //Defuzzification
     private LingValue FindMaxAnswer(List<LingValue> answers)
     {
@@ -60,17 +75,30 @@ namespace Fuzzy1
       return answers[index];
     }
 
-    private bool IsEnd()
+    private bool IsEndQuality()
     {
       //так сказал решарпер
-      return !rules.Except(UsedRules).Any()
+      return !qualityRules.Except(UsedRules).Any()
         ||
-        existingValues.Exists(x => x.VariableName == "Answer"
-        && x.ValueName == "Yes") &&
-        existingValues.Exists(x => x.VariableName == "Answer"
-        && x.ValueName == "No") &&
-        existingValues.Exists(x => x.VariableName == "Answer"
-        && x.ValueName == "Idn");
+        existingValuesQuality.Exists(x => x.VariableName.ToLower() == "quality"
+        && x.ValueName == "high") &&
+        existingValuesQuality.Exists(x => x.VariableName.ToLower() == "quality"
+        && x.ValueName == "low") &&
+        existingValuesQuality.Exists(x => x.VariableName.ToLower() == "quality"
+        && x.ValueName == "middle");
+    }
+
+    private bool IsEndFingerprint()
+    {
+      //так сказал решарпер
+      return !qualityRules.Except(UsedRules).Any()
+        ||
+        existingValuesFingerprint.Exists(x => x.VariableName.ToLower() == "fingerprintAnswer".ToLower()
+        && x.ValueName == "yes") &&
+        existingValuesFingerprint.Exists(x => x.VariableName.ToLower() == "fingerprintAnswer".ToLower()
+        && x.ValueName == "no") &&
+        existingValuesFingerprint.Exists(x => x.VariableName.ToLower() == "fingerprintAnswer".ToLower()
+        && x.ValueName == "idn");
     }
 
     #region fuzzifcation
