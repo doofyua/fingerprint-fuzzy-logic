@@ -39,13 +39,13 @@ namespace Fuzzy1
     }
 
     /// <summary>
-    /// Return double from 0 to 1.
+    /// Return double from 0 to 100.
     /// </summary>    
     public static double GetDarkness(double[,] img)
     {
       double numOfBlackPixels = 0;
       img.Select2D(x => numOfBlackPixels += (x < 100) ? 1 : 0);
-      return numOfBlackPixels / (img.GetLength(0) * img.GetLength(1));
+      return (numOfBlackPixels / (img.GetLength(0) * img.GetLength(1)))*100;
     }
 
     public static double GetBackgroundPercentage(double[,] img)
