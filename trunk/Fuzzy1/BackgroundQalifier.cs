@@ -22,9 +22,8 @@ namespace Fuzzy1
 
    
     /// <summary>
-    /// Return double between 0 and 1.
+    /// Return double between 0 and 100.
     /// </summary>
-    
     public static double GetBackgroundRercentage(double[,] img, int windowSize, double weight)
     {
       int badRegions = 0;
@@ -77,7 +76,7 @@ namespace Fuzzy1
           }
         }
       }
-      return (badRegions) / numberOfRegions;
+      return ((badRegions) / numberOfRegions)*100;
     }
 
     public static int[,] GetBigMask(int[,] mask, int imgX, int imgY, int windowSize)

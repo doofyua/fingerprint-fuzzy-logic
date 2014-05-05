@@ -2,42 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using CUDAFingerprinting.Common;
 
 namespace Fuzzy1
 {
-
-  #region toDel
-  //internal enum Answers
-  //{
-  //  Idn,
-  //  Yes,
-  //  No
-  //}
-
-  //internal enum Qualities
-  //{
-  //  Low,
-  //  Middle,
-  //  High
-  //}
-
-  //internal enum Identity
-  //{
-  //  Same,
-  //  Different
-  //}
-
-  //internal struct Rule
-  //{
-  //  internal Qualities quality;
-  //  internal Identity Identity;
-  //  internal Answers answer;
-  //  internal double factor;
-  //}
-  #endregion
-
 
   internal class DecisionMaker
   {
@@ -46,12 +18,12 @@ namespace Fuzzy1
     List<Rule> UsedRules = new List<Rule>();
 
     private List<Rule> rules;
-
+    //TODO:
     internal LingValue GetAnswer(double mccAnswer, double qualityAnswer)
     {
 
       rules = new List<Rule>();
-      
+
       bool isChanged = true;
 
       while (IsEnd() && isChanged)
@@ -142,16 +114,28 @@ namespace Fuzzy1
       LingValue highValue = new LingValue("Darkness", "High", HidhDarknessFunction(darknessAnswer));
       return new List<LingValue>(new[] { lowValue, highValue });
     }
-    //TODO
     private static double LowDarknessFunction(double x)
     {
-      //все меньше 40%
+      if (x < 0.5)
+      {
+        return 1;
+      }
+      if (x >= 0.5 && x < 4)
+      {
+        return -(2 / 7) * x + 8 / 7;
+      }
       return 0;
     }
     private static double HidhDarknessFunction(double x)
     {
-      //все больше 40%
-      return 0;
+      if (x < 0.5)
+      {
+        return 0;
+      } if (x >= 0.5 && x < 4)
+      {
+        return (2 / 7) * x - 1 / 7; ;
+      }
+      return 1;
     }
 
     //background
@@ -161,50 +145,79 @@ namespace Fuzzy1
       LingValue normalBacground = new LingValue("Background", "Normal", HidhDarknessFunction(backgrouundAnswer));
       return new List<LingValue>(new[] { largeBacground, normalBacground });
     }
-    //TODO
     private static double LargeBacgroundFunction(double x)
     {
+      if (x > 70)
+      {
+        return 1;
+      }
+      if (x > 15 && x <= 70)
+      {
+        return x * (1 / 55) - (3 / 11);
+      }
       return 0;
     }
     private static double NormalBacgroundFunction(double x)
     {
+      if (x < 15)
+      {
+        return 1;
+      }
+      if (x >= 15 && x < 70)
+      {
+        return -(1 / 55) * x + (14 / 11);
+      }
       return 0;
     }
 
-    
+
     //LowQualityBlocksNfiq
     private List<LingValue> LowQualityBlocksNfiqFuzzification(double nfiqBlocksAnswer)
     {
-      LingValue manyBlocks = new LingValue("LowQualityBlocks","Many", ManyLowQualityBlocksFunction(nfiqBlocksAnswer));
-      LingValue littleBlocks = new LingValue("LowQualityBlocks","Little", LittleLowQualityBlocksFunction(nfiqBlocksAnswer));
-      return new List<LingValue>(new[] {manyBlocks, littleBlocks});
+      LingValue manyBlocks = new LingValue("LowQualityBlocks", "Many", ManyLowQualityBlocksFunction(nfiqBlocksAnswer));
+      LingValue littleBlocks = new LingValue("LowQualityBlocks", "Little", LittleLowQualityBlocksFunction(nfiqBlocksAnswer));
+      return new List<LingValue>(new[] { manyBlocks, littleBlocks });
     }
-    //TODO
-    private double LittleLowQualityBlocksFunction(double nfiqBlocksAnswer)
+    private double LittleLowQualityBlocksFunction(double x)
     {
-      throw new NotImplementedException();
+      if (x < 5)
+      {
+        return 1;
+      }
+      if (x >= 5 && x < 10)
+      {
+        return Gaussian.Gaussian1D((x - 5), 1.5);
+      }
+      return 0;
     }
-    private double ManyLowQualityBlocksFunction(double nfiqBlocksAnswer)
+    private double ManyLowQualityBlocksFunction(double x)
     {
-      throw new NotImplementedException();
+      if (x < 5)
+      {
+        return 0;
+      }
+      if (x >= 5 && x < 10)
+      {
+        return Gaussian.Gaussian1D(-x + 10, 1.5);
+      }
+      return 1;
     }
 
 
     private List<LingValue> AverageQualityNfiqFuzzification(double nfiqQualityAnswer)
     {
-      LingValue highQualityNfiq = new LingValue("QualityNfiq","High",HighQualityNfiqFunction(nfiqQualityAnswer));
+      LingValue highQualityNfiq = new LingValue("QualityNfiq", "High", HighQualityNfiqFunction(nfiqQualityAnswer));
       //LingValue middleQualityNfiq = new LingValue("QualityNfiq","Middle",MiddleQualityNfiqFunction(nfiqQualityAnswer));
-      LingValue lowQualityNfiq = new LingValue("QualityNfiq","Low",LowQualityNfiqFunction(nfiqQualityAnswer));
-      return new List<LingValue>(new[] {highQualityNfiq, lowQualityNfiq});
+      LingValue lowQualityNfiq = new LingValue("QualityNfiq", "Low", LowQualityNfiqFunction(nfiqQualityAnswer));
+      return new List<LingValue>(new[] { highQualityNfiq, lowQualityNfiq });
     }
-   
     //private double MiddleQualityNfiqFunction(double nfiqQualityAnswer)
     //{
     //  throw new NotImplementedException();
     //}
     private double LowQualityNfiqFunction(double x)
     {
-      if (x<1)
+      if (x < 1)
       {
         return 0;
       }
