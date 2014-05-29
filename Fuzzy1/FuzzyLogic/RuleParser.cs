@@ -46,7 +46,7 @@ namespace Fuzzy1
     private static Term ParseTerm(string termString)
     {
       string[] variableAdnValue = termString.Split(new[]{" "},StringSplitOptions.RemoveEmptyEntries);
-      return new Term(variableAdnValue[0], variableAdnValue[1]);
+      return new Term(variableAdnValue[0].ToLower(), variableAdnValue[1].ToLower());
     }
   }
 }

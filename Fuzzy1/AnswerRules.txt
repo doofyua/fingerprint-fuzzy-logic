@@ -1,0 +1,34 @@
+fingerprintAnswer1 yes, fingerprintAnswer2 yes, fingerprintAnswer3 yes = answer yes
+fingerprintAnswer1 idn, fingerprintAnswer2 idn, fingerprintAnswer3 idn = answer idn
+fingerprintAnswer1 no, fingerprintAnswer2 no, fingerprintAnswer3 no = answer no
+
+fingerprintAnswer1 yes, fingerprintAnswer2 yes, fingerprintAnswer3 idn = answer yes
+fingerprintAnswer1 yes, fingerprintAnswer2 idn, fingerprintAnswer3 yes = answer yes
+fingerprintAnswer1 idn, fingerprintAnswer2 yes, fingerprintAnswer3 yes = answer yes
+
+fingerprintAnswer1 no, fingerprintAnswer2 no, fingerprintAnswer3 idn = answer no
+fingerprintAnswer1 no, fingerprintAnswer2 idn, fingerprintAnswer3 no = answer no
+fingerprintAnswer1 idn, fingerprintAnswer2 no, fingerprintAnswer3 no = answer no
+
+fingerprintAnswer1 idn, fingerprintAnswer2 idn, fingerprintAnswer3 no = answer no
+fingerprintAnswer1 idn, fingerprintAnswer2 no, fingerprintAnswer3 idn = answer no
+fingerprintAnswer1 no, fingerprintAnswer2 idn, fingerprintAnswer3 idn = answer no
+
+fingerprintAnswer1 idn, fingerprintAnswer2 idn, fingerprintAnswer3 yes = answer yes
+fingerprintAnswer1 idn, fingerprintAnswer2 yes, fingerprintAnswer3 idn = answer yes
+fingerprintAnswer1 yes, fingerprintAnswer2 idn, fingerprintAnswer3 idn = answer yes
+
+fingerprintAnswer1 no, fingerprintAnswer2 no, fingerprintAnswer3 yes = answer no
+fingerprintAnswer1 no, fingerprintAnswer2 yes, fingerprintAnswer3 no = answer no
+fingerprintAnswer1 yes, fingerprintAnswer2 no, fingerprintAnswer3 no = answer no
+
+fingerprintAnswer1 yes, fingerprintAnswer2 yes, fingerprintAnswer3 no = answer yes
+fingerprintAnswer1 yes, fingerprintAnswer2 no, fingerprintAnswer3 yes = answer yes
+fingerprintAnswer1 no, fingerprintAnswer2 yes, fingerprintAnswer3 yes = answer yes
+
+fingerprintAnswer1 yes, fingerprintAnswer2 no, fingerprintAnswer3 idn = answer idn
+fingerprintAnswer1 yes, fingerprintAnswer2 idn, fingerprintAnswer3 no = answer idn
+fingerprintAnswer1 no, fingerprintAnswer2 yes, fingerprintAnswer3 idn = answer idn
+fingerprintAnswer1 no, fingerprintAnswer2 idn, fingerprintAnswer3 yes = answer idn
+fingerprintAnswer1 idn, fingerprintAnswer2 no, fingerprintAnswer3 yes = answer idn
+fingerprintAnswer1 idn, fingerprintAnswer2 yes, fingerprintAnswer3 no = answer idn

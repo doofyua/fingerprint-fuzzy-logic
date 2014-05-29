@@ -18,9 +18,7 @@ namespace Fuzzy1
   {
     private static int N;
     private static int M;
-    private static bool[,] mask = new bool[N, M];
-
-   
+    
     /// <summary>
     /// Return double between 0 and 100.
     /// </summary>

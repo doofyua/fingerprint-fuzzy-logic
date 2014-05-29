@@ -1,9 +1,0 @@
-quality high, identity same = answer yes
-quality high , identity different =answer yes 
-quality middle , identity same =answer yes * 0,5
-quality middle , identity same =answer idn * 0,5
-quality middle , identity different =answer no * 0,5
-quality middle , identity different =answer idn * 0,5
-quality low , identity same = answer idn
-quality low , identity different =answer idn
-

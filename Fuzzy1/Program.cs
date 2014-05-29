@@ -14,10 +14,86 @@ namespace Fuzzy1
   class Program
   {
     private static string pathToDb = @"D:\Учеба\Было\fingerprint\Handbook II Ed\FVC2000\Dbs\Db2_a\";
+    private static string pathToTemplatesDb = @"D:\TemplateDB\";
     private static string pathToRules = @"..\..\Rules.txt";
+
     static void Main(string[] args)
     {
-    int t = 3;
+      //DbHelper.GetQualityDb();
+      DbHelper.FindBestQualityFingerprint();
+      //GetFingerprint(pathToDb + "2_7.tif", pathToDb + "2_6.tif");
+      //OneFingerTest("2_7.tif", "2_6.tif");
+      int t = 3;
+    }
+
+    private static void OneFingerTest(string fileName1, string fileName2)
+    {
+      var img1 = ImageHelper.LoadImage(pathToDb + fileName1);
+      var img2 = ImageHelper.LoadImage(pathToDb + fileName2);
+      double identity1 = Matcher.GetIdentity(pathToDb + fileName2, img2, pathToDb + fileName1, img1);
+
+      var map = QualityHelper.GetQualityMap(pathToDb + fileName1);
+      double awerageQuality = QualityHelper.GetAverageQualityNfiq(map);
+      double badBlocks = QualityHelper.GetLowQualityBlocksNfiq(map);
+      double darkness = QualityHelper.GetDarkness(img1);
+      double background = QualityHelper.GetBackgroundPercentage(img1);
+      InputVector input = new InputVector();
+      input.AverageQuality = awerageQuality;
+      input.Background = background;
+      input.BadBlocks = badBlocks;
+      input.Darkness = darkness;
+      input.Identity = identity1;
+
+      DecisionMaker m = new DecisionMaker();
+      m.GetAnswerForFinger(input);
+
+    }
+
+    private static void OneFullCycle(string fileName1, string fileName2, string fileName3, string fileNameEt)
+    {
+      var imgEt = ImageHelper.LoadImage(pathToDb+fileNameEt);
+      var img1 = ImageHelper.LoadImage(pathToDb+fileName1);
+      var img2 = ImageHelper.LoadImage(pathToDb+fileName2);
+      var img3 = ImageHelper.LoadImage(pathToDb+fileName3);
+
+      double identity1 =  Matcher.GetIdentity(pathToDb+fileNameEt, imgEt,pathToDb+fileName1,img1);
+      double identity2 = Matcher.GetIdentity(pathToDb+fileNameEt, imgEt,pathToDb+fileName2,img2);
+      double identity3 = Matcher.GetIdentity(pathToDb+fileNameEt, imgEt,pathToDb+fileName3,img3);
+      
+      var map = QualityHelper.GetQualityMap(pathToDb+fileName1);
+      double awerageQuality = QualityHelper.GetAverageQualityNfiq(map);
+      double badBlocks = QualityHelper.GetLowQualityBlocksNfiq(map);
+      double darkness = QualityHelper.GetDarkness(img1);
+      double background = QualityHelper.GetBackgroundPercentage(img1);
+
+
+
+    }
+
+    private static void SaveTemplateDB()
+    {
+      for (int i = 1  ; i < 101; i++)
+      {
+        for (int j = 1; j < 9; j++)
+        {
+          string fileName = i + "_" + j + ".tif";
+          double[,] img = ImageHelper.LoadImage(pathToDb + fileName);
+          Matcher.SaveTemplate(img, pathToTemplatesDb + fileName);
+
+        }
+        
+      }
+ 
+    }
+
+    private static void GetFingerprint(string path1, string path2 )
+    {
+      //take 
+      double[,] image1 = ImageHelper.LoadImage(path1);
+      double[,] image2 = ImageHelper.LoadImage(path2);
+      double a = Matcher.GetIdentity(path1, image1, path2, image2);
+      int t = 3;
+
     }
 
     private static void RuleParserTest()

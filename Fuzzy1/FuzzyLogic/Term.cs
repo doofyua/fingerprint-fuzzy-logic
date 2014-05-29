@@ -14,9 +14,9 @@ namespace Fuzzy1
 
     public Term(string var, string val)
     {
-     
-      this.varName = var;
-      this.valName = val;
+
+      this.varName = var.ToLower();
+      this.valName = val.ToLower();
     }
 
     public string VariableName
@@ -33,7 +33,7 @@ namespace Fuzzy1
 
     public bool Evaluate(List<LingValue> currentValues, out double valueMembership)
     {
-      int index = currentValues.FindIndex(x => x.ValueName == valName && x.VariableName == varName);
+      int index = currentValues.FindIndex(x => x.ValueName.ToLower() == valName.ToLower() && x.VariableName.ToLower() == varName.ToLower());
       if (index != -1)
       {
         valueMembership = currentValues[index].Membership;
@@ -50,7 +50,7 @@ namespace Fuzzy1
 
     public int FindIndex(List<LingValue> currentValues)
     {
-      return currentValues.FindIndex(x => x.ValueName == valName && x.VariableName == varName);
+      return currentValues.FindIndex(x => x.ValueName.ToLower() == valName.ToLower() && x.VariableName.ToLower() == varName.ToLower());
     }
 
   }
