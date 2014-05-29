@@ -20,17 +20,7 @@ namespace Fuzzy1
       this.factor = factor;
     }
 
-    //public List<Term> Terms
-    //{
-    //  get { return terms; }
-    //  set { terms = value; }
-    //}
-
-    //public Term Answer
-    //{
-    //  get { return answer; }
-    //  set { answer = value; }
-    //}
+  
 
     public bool Evaluate(List<LingValue> currentValues)
     {

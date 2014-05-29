@@ -1,0 +1,14 @@
+darkness low, background normal, QualityNfiq high, LowQualityBlocks little = quality high
+
+darkness high, background normal, QualityNfiq high, LowQualityBlocks little = quality middle
+darkness low, background large, QualityNfiq high, LowQualityBlocks little = quality middle
+darkness low, background normal, QualityNfiq low, LowQualityBlocks little = quality middle
+darkness low, background normal, QualityNfiq high, LowQualityBlocks many = quality middle
+
+darkness high, background large = quality low
+background large, QualityNfiq low = quality low
+QualityNfiq low, LowQualityBlocks many = quality low
+darkness high, QualityNfiq low = quality low
+darkness high, LowQualityBlocks many = quality low
+background large, LowQualityBlocks many = quality low
+QualityNfiq low, LowQualityBlocks many = quality low

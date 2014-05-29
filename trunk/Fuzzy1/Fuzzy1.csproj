@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,18 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LingValue.cs" />
-    <Compile Include="QualityHelper.cs" />
-    <Compile Include="Rule.cs" />
-    <Compile Include="RuleParser.cs" />
-    <Compile Include="Term.cs" />
+    <Compile Include="DbHelper.cs" />
+    <Compile Include="FuzzyLogic\Fuzzyficator.cs" />
+    <Compile Include="FuzzyLogic\InputVector.cs" />
+    <Compile Include="FuzzyLogic\LingValue.cs" />
+    <Compile Include="InputHelper.cs" />
+    <Compile Include="Matching\Matcher.cs" />
+    <Compile Include="Quality\QualityHelper.cs" />
+    <Compile Include="FuzzyLogic\Rule.cs" />
+    <Compile Include="FuzzyLogic\RuleParser.cs" />
+    <Compile Include="FuzzyLogic\Term.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="DecisionMaker.cs" />
-    <Compile Include="MinutiaeExtractor.cs" />
-    <Compile Include="MinutiaeFileParser.cs" />
+    <Compile Include="FuzzyLogic\DecisionMaker.cs" />
+    <Compile Include="Matching\MinutiaeExtractor.cs" />
+    <Compile Include="Matching\MinutiaeFileParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BackgroundQalifier.cs" />
+    <Compile Include="Quality\BackgroundQalifier.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

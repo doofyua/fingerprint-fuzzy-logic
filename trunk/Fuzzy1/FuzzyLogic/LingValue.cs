@@ -36,8 +36,12 @@ namespace Fuzzy1
 
     public void AddMembership(double mem)
     {
-      sumMembership += mem;
-      numOfRules++;
+      if (sumMembership<mem)
+      {
+        sumMembership = mem; 
+      }
+      
+      //numOfRules++;
     }
 
     public int NumOfRules
@@ -49,13 +53,13 @@ namespace Fuzzy1
     {
       return other.Membership == sumMembership
          && other.NumOfRules == numOfRules
-         && other.ValueName == valueName
-         && other.VariableName == variableName;
+         && other.ValueName.ToLower() == valueName.ToLower()
+         && other.VariableName.ToLower() == variableName.ToLower();
     }
 
     public double Membership
     {
-      get { return sumMembership / numOfRules; }
+      get { return sumMembership; } // / numOfRules; }
     }
   }
 }
