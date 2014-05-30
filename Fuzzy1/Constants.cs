@@ -20,11 +20,14 @@ namespace Fuzzy1
     public const string PathToFingerprintRules = @"../../FingerprintRules.txt";
     public const string PathToAnswerRules = @"../../AnswerRules.txt";
 
-    public const string PathToDb = @"D:\Учеба\Было\fingerprint\Handbook II Ed\FVC2000\Dbs\Db2_a\";
+    public const string PathToDb = @"D:\Fuzzy\db\";
     public const string PathToDb2 = @"D:\Учеба\Было\fingerprint\Handbook II Ed\FVC2000\Dbs\Db2_b\10";
+
     public const string pathToTemplatesDb = @"D:\Fuzzy\TemplateDB\";
 
     public const string qualityDb = @"D:\Fuzzy\";
+
+    public const string resultsPath = @"D:\Fuzzy\res\";
 
     public const string pathToMccParams = @"D:\Source\diplom\MCCSdk v1.3\Sdk\MccMatchParams.xml";
   }

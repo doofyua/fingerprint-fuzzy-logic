@@ -22,15 +22,13 @@ namespace Fuzzy1
       return res;
     }
 
-    internal static List<InputVector> GetMultyFuzzyInput(string fileName1, string fileName2, string fileName3, string fileNameEt)
-    {
-      List<InputVector> res = new List<InputVector>();
+    internal static Tuple<InputVector,InputVector,InputVector> GetMultyFuzzyInput(string fileName1, string fileName2, string fileName3, string fileNameEt)
+    {      
       var res1 = GetMonoFuzzyInput(fileName1, fileNameEt);
       var res2 = GetMonoFuzzyInput(fileName2, fileNameEt);
       var res3 = GetMonoFuzzyInput(fileName3, fileNameEt);
-      res.Add(res1);
-      res.Add(res2);
-      res.Add(res3);
+      Tuple<InputVector, InputVector, InputVector> res =
+        new Tuple<InputVector, InputVector, InputVector>(res1, res2, res3);
       return res;
     }
 

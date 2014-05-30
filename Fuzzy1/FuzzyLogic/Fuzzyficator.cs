@@ -10,33 +10,33 @@ namespace Fuzzy1
   internal static class Fuzzyficator
   {
     //identity
-    internal static List<LingValue> IdentityFuzzification(double mccAnswer)
+    internal static List<LingValue> IdentityFuzzification(double mccAnswer, double threshold)
     {
-      LingValue sameValue = new LingValue("identity", "same", SameFunction(mccAnswer));
-      LingValue differentValue = new LingValue("identity", "different", DifferentFunction(mccAnswer));
+      LingValue sameValue = new LingValue("identity", "same", SameFunction(mccAnswer, threshold));
+      LingValue differentValue = new LingValue("identity", "different", DifferentFunction(mccAnswer, threshold));
       return new List<LingValue>(new[] { sameValue, differentValue });
     }
-    private static double SameFunction(double x)
+    private static double SameFunction(double x, double threshold)
     {
-      if (x >= 0.75)
+      if (x >= threshold + 0.25)
       {
         return 1;
       }
-      if (x >= 0.25 && x < 0.75)
+      if (x >= threshold - 0.25 && x < threshold + 0.25)
       {
-        return 1 / (1 + Math.Exp(-(20 * x - 10)));
+        return 1 / (1 + Math.Exp(-(20 * x - threshold*20)));
       }
       return 0;
     }
-    private static double DifferentFunction(double x)
+    private static double DifferentFunction(double x, double threshold)
     {
-      if (x >= 0.75)
+      if (x >= threshold + 0.25)
       {
         return 0;
       }
-      if (x >= 0.25 && x < 0.75)
+      if (x >= threshold - 0.25 && x < threshold + 0.25)
       {
-        return 1 / (1 + Math.Exp(20 * x - 10));
+        return 1 / (1 + Math.Exp(20 * x - threshold * 20));
       }
       return 1;
     }
