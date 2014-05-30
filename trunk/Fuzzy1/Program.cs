@@ -19,11 +19,24 @@ namespace Fuzzy1
 
     static void Main(string[] args)
     {
-      //DbHelper.GetQualityDb();
-      DbHelper.FindBestQualityFingerprint();
-      //GetFingerprint(pathToDb + "2_7.tif", pathToDb + "2_6.tif");
-      //OneFingerTest("2_7.tif", "2_6.tif");
+      var a = Test.MultymodalAllSameTest(3, 0.8);
       int t = 3;
+    }
+
+    private static void OneCycleTest()
+    {
+      int i = 5;
+      int a = DbHelper.GetBestFingerprint(i);
+      var b = DbHelper.GetTestingFingerprintSame(i, a);
+      OneFullCycle(b[0].Item1, b[0].Item2, b[0].Item3, i.ToString() + "_" + a.ToString()+".tif");
+    }
+
+    private static void DBTest()
+    {
+      int a = DbHelper.GetBestFingerprint(5);
+      var b = DbHelper.GetTestingFingerprintSame(100, DbHelper.GetBestFingerprint(100));
+      var c = DbHelper.GetTestingFingerprintDiff(100);
+      //DbHelper.FindBestQualityFingerprint();
     }
 
     private static void OneFingerTest(string fileName1, string fileName2)
@@ -45,28 +58,20 @@ namespace Fuzzy1
       input.Identity = identity1;
 
       DecisionMaker m = new DecisionMaker();
-      m.GetAnswerForFinger(input);
+      m.GetAnswerForFinger(input,0.5);
 
     }
 
     private static void OneFullCycle(string fileName1, string fileName2, string fileName3, string fileNameEt)
     {
-      var imgEt = ImageHelper.LoadImage(pathToDb+fileNameEt);
-      var img1 = ImageHelper.LoadImage(pathToDb+fileName1);
-      var img2 = ImageHelper.LoadImage(pathToDb+fileName2);
-      var img3 = ImageHelper.LoadImage(pathToDb+fileName3);
+      var fuzzyInput =  InputHelper.GetMultyFuzzyInput(fileName1, fileName2, fileName3, fileNameEt);
 
-      double identity1 =  Matcher.GetIdentity(pathToDb+fileNameEt, imgEt,pathToDb+fileName1,img1);
-      double identity2 = Matcher.GetIdentity(pathToDb+fileNameEt, imgEt,pathToDb+fileName2,img2);
-      double identity3 = Matcher.GetIdentity(pathToDb+fileNameEt, imgEt,pathToDb+fileName3,img3);
-      
-      var map = QualityHelper.GetQualityMap(pathToDb+fileName1);
-      double awerageQuality = QualityHelper.GetAverageQualityNfiq(map);
-      double badBlocks = QualityHelper.GetLowQualityBlocksNfiq(map);
-      double darkness = QualityHelper.GetDarkness(img1);
-      double background = QualityHelper.GetBackgroundPercentage(img1);
-
-
+      DecisionMaker m = new DecisionMaker();
+      double threshold = 0.5;
+      var answer = m.GetAnswer(fuzzyInput, threshold);
+      string a = answer.ValueName;
+      double i = answer.Membership;
+     
 
     }
 
@@ -133,7 +138,6 @@ namespace Fuzzy1
 
     private static void GetAndMatchTemplates()
     {
-
       //object template =BioLab.Biometrics.Mcc.Sdk.MccSdk.CreateMccTemplate(256, 364, 500, lst.ToArray());
       //double answ = BioLab.Biometrics.Mcc.Sdk.MccSdk.MatchMccTemplates(template, template);
 

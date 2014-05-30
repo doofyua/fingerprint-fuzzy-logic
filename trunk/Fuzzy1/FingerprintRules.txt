@@ -1,8 +1,8 @@
 quality high, identity same = fingerprintAnswer yes
 quality high , identity different =fingerprintAnswer no
 quality middle, identity same =fingerprintAnswer yes * 0,5
-quality middle, identity same =fingerprintAnswer idn * 0,5
+quality middle, identity same =fingerprintAnswer idk * 0,5
 quality middle, identity different =fingerprintAnswer no * 0,5
-quality middle, identity different =fingerprintAnswer idn * 0,5
-quality low, identity same = fingerprintAnswer idn
-quality low, identity different =fingerprintAnswer idn
+quality middle, identity different =fingerprintAnswer idk * 0,5
+quality low, identity same = fingerprintAnswer idk
+quality low, identity different =fingerprintAnswer idk
