@@ -24,16 +24,19 @@ namespace Fuzzy1
 
       //var a = Test.FuzzySameTest(20, 0.01);
       //File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzySameTest " + a.ToString());        
-      //var b = Test.FuzzyDifTest(20, 0.01);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzyDifTest " + b.ToString());
-      var c = Test.MonomodalSameTest(20, 0.01);
-      File.AppendAllText(Constants.resultsPath + "time.txt", "\n MonomodalSameTest " + c.ToString());
-      var d = Test.MonomodalDifTest(20, 0.01);
+        var b = Test.FuzzyDifTest(20, 0.01);
+        File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzyDifTest " + b.ToString());
+
+      //var c = Test.MonomodalSameTest(20, 0.01);
+      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MonomodalSameTest " + c.ToString());
+      //var d = Test.MonomodalDifTest(20, 0.01);
       //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MonomodalDifTest " + d.ToString());
-      //var e = Test.MultymodalAllSameTest(20, 0.01);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalAllSameTest " + e.ToString());
-      //var f = Test.MultymodalAllDifTest(20, 0.01);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalAllDifTest " + f.ToString());
+
+        //var e = Test.MultymodalAllSameTest(20, 0.01);
+        //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalAllSameTest " + e.ToString());
+        //var f = Test.MultymodalAllDifTest(20, 0.01);
+        //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalAllDifTest " + f.ToString());
+
       //var j = Test.MultymodalVotSameTest(20, 0.01);
       //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotSameTest " + j.ToString());
       //var h = Test.MultymodalVotDifTest(100, 0.01);
@@ -62,7 +65,7 @@ namespace Fuzzy1
     {
       var img1 = ImageHelper.LoadImage(pathToDb + fileName1);
       var img2 = ImageHelper.LoadImage(pathToDb + fileName2);
-      double identity1 = Matcher.GetIdentity(pathToDb + fileName2, img2, pathToDb + fileName1, img1);
+      double identity1 = Matcher.GetIdentity(pathToDb + fileName2, pathToDb + fileName1);
 
       var map = QualityHelper.GetQualityMap(pathToDb + fileName1);
       double awerageQuality = QualityHelper.GetAverageQualityNfiq(map);
@@ -115,7 +118,7 @@ namespace Fuzzy1
       //take 
       double[,] image1 = ImageHelper.LoadImage(path1);
       double[,] image2 = ImageHelper.LoadImage(path2);
-      double a = Matcher.GetIdentity(path1, image1, path2, image2);
+      double a = Matcher.GetIdentity(path1, path2);
       int t = 3;
 
     }

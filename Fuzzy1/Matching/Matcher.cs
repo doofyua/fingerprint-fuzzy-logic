@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 using BioLab.Biometrics.Mcc.Sdk;
 using System.IO;
+using CUDAFingerprinting.Common;
 
 namespace Fuzzy1
 {
   internal static class Matcher
   {
 
-    private static object GetTemplate(string fileName, double[,] image)
+    private static object GetTemplate(string fileName)
     {
       //if this template exist alredy
       if (File.Exists(Constants.pathToTemplatesDb + fileName + "_t"))
@@ -21,6 +22,7 @@ namespace Fuzzy1
       }
       else
       {
+        var image = ImageHelper.LoadImage(Constants.PathToDb + fileName);
         var minutiae = MinutiaeExtractor.GetBiolabMinutiae(image);
         object template = MccSdk.CreateMccTemplate(image.GetLength(1), image.GetLength(0), 500, minutiae.ToArray());
         MccSdk.SaveMccTemplateToTextFile(template, Constants.pathToTemplatesDb + fileName + "_t");
@@ -28,11 +30,11 @@ namespace Fuzzy1
       }
     }
 
-    public static double GetIdentity(string fileName1, double[,] image1, string fileName2, double[,] image2)
+    public static double GetIdentity(string fileName1, string fileName2)
     {
 
-      object template1 = GetTemplate(fileName1,image1);
-      object template2 = GetTemplate(fileName2,image2);
+      object template1 = GetTemplate(fileName1);
+      object template2 = GetTemplate(fileName2);
 
       MccSdk.SetMccMatchParameters(Constants.pathToMccParams);
       double answer = BioLab.Biometrics.Mcc.Sdk.MccSdk.MatchMccTemplates(template1, template2);

@@ -35,19 +35,19 @@ namespace Fuzzy1
 
     internal static double GetMonomodalInput(string fileName1, string fileNameEt)
     {
-      var img1 = ImageHelper.LoadImage(Constants.PathToDb + fileName1);
-      var imgEt = ImageHelper.LoadImage(Constants.PathToDb + fileNameEt);
+      //var img1 = ImageHelper.LoadImage(Constants.PathToDb + fileName1);
+      //var imgEt = ImageHelper.LoadImage(Constants.PathToDb + fileNameEt);
 
-      double identity = Matcher.GetIdentity(fileNameEt, imgEt, fileName1, img1);
+      double identity = Matcher.GetIdentity(fileNameEt, fileName1);
       return identity;
     }
 
     internal static InputVector GetMonoFuzzyInput(string fileName1, string fileNameEt, QualityHelper qhelper)
     {
-      var img1 = ImageHelper.LoadImage(Constants.PathToDb + fileName1);
-      var imgEt = ImageHelper.LoadImage(Constants.PathToDb + fileNameEt);
+      //var img1 = ImageHelper.LoadImage(Constants.PathToDb + fileName1);
+      //var imgEt = ImageHelper.LoadImage(Constants.PathToDb + fileNameEt);
 
-      double identity1 = Matcher.GetIdentity(fileNameEt, imgEt, fileName1, img1);
+      double identity1 = Matcher.GetIdentity(fileNameEt, fileName1);
 
       
       //var map = QualityHelper.GetQualityMap(Constants.PathToDb + fileName1);
