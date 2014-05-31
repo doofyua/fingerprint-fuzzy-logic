@@ -56,7 +56,7 @@ namespace Fuzzy1
       }
       if (x >= 0.5 && x < 4)
       {
-        return -(2 / 7) * x + 8 / 7;
+        return -(2.0 / 7) * x + 8.0 / 7;
       }
       return 0;
     }
@@ -67,7 +67,7 @@ namespace Fuzzy1
         return 0;
       } if (x >= 0.5 && x < 4)
       {
-        return (2 / 7) * x - 1 / 7; ;
+        return (2.0 / 7) * x - 1.0 / 7; ;
       }
       return 1;
     }
@@ -75,8 +75,8 @@ namespace Fuzzy1
     //background
     internal static List<LingValue> BackgroundFuzzification(double backgrouundAnswer)
     {
-      LingValue largeBackground = new LingValue("background", "large", LowDarknessFunction(backgrouundAnswer));
-      LingValue normalBackground = new LingValue("background", "normal", HidhDarknessFunction(backgrouundAnswer));
+        LingValue largeBackground = new LingValue("background", "large", LargeBacgroundFunction(backgrouundAnswer));
+        LingValue normalBackground = new LingValue("background", "normal", NormalBacgroundFunction(backgrouundAnswer));
       return new List<LingValue>(new[] { largeBackground, normalBackground });
     }
     private static double LargeBacgroundFunction(double x)
@@ -87,7 +87,7 @@ namespace Fuzzy1
       }
       if (x > 15 && x <= 70)
       {
-        return x * (1 / 55) - (3 / 11);
+        return x * (1.0 / 55) - (3.0 / 11);
       }
       return 0;
     }
@@ -99,7 +99,7 @@ namespace Fuzzy1
       }
       if (x >= 15 && x < 70)
       {
-        return -(1 / 55) * x + (14 / 11);
+        return -(1.0 / 55) * x + (14.0 / 11);
       }
       return 0;
     }
@@ -114,25 +114,25 @@ namespace Fuzzy1
     }
     private static double LittleLowQualityBlocksFunction(double x)
     {
-      if (x < 5)
+      if (x < 19)
       {
         return 1;
       }
-      if (x >= 5 && x < 10)
+      if (x >= 19 && x < 26)
       {
-        return Gaussian.Gaussian1D((x - 5), 1.5);
+        return 3*Math.Sqrt(Math.PI*2) * Gaussian.Gaussian1D((x - 19),3);
       }
       return 0;
     }
     private static double ManyLowQualityBlocksFunction(double x)
     {
-      if (x < 5)
+      if (x < 19)
       {
         return 0;
       }
-      if (x >= 5 && x < 10)
+      if (x >= 19 && x < 26)
       {
-        return Gaussian.Gaussian1D(-x + 10, 1.5);
+          return 3 * Math.Sqrt(Math.PI * 2) * Gaussian.Gaussian1D(-x + 26, 3);
       }
       return 1;
     }
@@ -153,7 +153,7 @@ namespace Fuzzy1
     {
       if (x < 1)
       {
-        return 0;
+        return 1;
       }
       else
       {

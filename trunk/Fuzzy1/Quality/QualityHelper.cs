@@ -35,7 +35,7 @@ namespace Fuzzy1
 
       int i = Int32.Parse( a[0]);
       int j = Int32.Parse( (a[1].Split('.'))[0]);
-      return Double.Parse( quality.Find(x => Int32.Parse(x[0])==i && Int32.Parse(x[1])==j)[2]);      
+      return 100 * Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[2]);      
     }
 
     public double GetAverageQualityNfiqS(string fileName1)
@@ -43,7 +43,7 @@ namespace Fuzzy1
       var a = fileName1.Split('_');
       int i = Int32.Parse(a[0]);
       int j = Int32.Parse(a[1].Split('.')[0]);
-      return Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[3]);
+      return  Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[3]);
       
     }
 
@@ -53,7 +53,7 @@ namespace Fuzzy1
       int i = Int32.Parse(a[0]);
       int j = Int32.Parse(a[1].Split('.')[0]);
 
-      return Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[4]);
+      return 100 * Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[4]);
     }
 
     public double GetBackgroundS(string fileName1)
@@ -61,7 +61,7 @@ namespace Fuzzy1
       var a = fileName1.Split('_');
       int i = Int32.Parse(a[0]);
       int j = Int32.Parse(a[1].Split('.')[0]);
-      return Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[5]);  
+      return 100 * Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[5]);  
     }
 
     public static double GetLowQualityBlocksNfiq(int[,] qualityMap)
