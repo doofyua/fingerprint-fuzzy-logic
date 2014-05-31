@@ -6,11 +6,64 @@ using System.Threading.Tasks;
 using Nfiq;
 using CUDAFingerprinting.Common;
 using System.Drawing;
+using System.IO;
 
 namespace Fuzzy1
 {
-  internal static class QualityHelper
+  internal class QualityHelper
   {
+    List<string[]> quality;
+
+    public QualityHelper()
+    {
+      quality = new List<string[]>();
+      var qualityDb = File.ReadAllLines(Constants.qualityDb + "qualityTest1.csv");
+      for (int i = 1; i < 101; i++)
+      {
+        for (int j = 1; j < 9; j++)
+        {
+          string[] strs = qualityDb[(i - 1) * 8 + j - 1].Split();
+          // double quality = Double.Parse(strs[3]);
+          quality.Add(strs);
+        }
+      }
+    }
+
+    public double GetLowQualityBlocksNfiqS(string fileName1)
+    { 
+     var a = fileName1.Split('_');
+
+      int i = Int32.Parse( a[0]);
+      int j = Int32.Parse( (a[1].Split('.'))[0]);
+      return Double.Parse( quality.Find(x => Int32.Parse(x[0])==i && Int32.Parse(x[1])==j)[2]);      
+    }
+
+    public double GetAverageQualityNfiqS(string fileName1)
+    {
+      var a = fileName1.Split('_');
+      int i = Int32.Parse(a[0]);
+      int j = Int32.Parse(a[1].Split('.')[0]);
+      return Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[3]);
+      
+    }
+
+    public double GetDarknessS(string fileName1)
+    {
+      var a = fileName1.Split('_');
+      int i = Int32.Parse(a[0]);
+      int j = Int32.Parse(a[1].Split('.')[0]);
+
+      return Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[4]);
+    }
+
+    public double GetBackgroundS(string fileName1)
+    {
+      var a = fileName1.Split('_');
+      int i = Int32.Parse(a[0]);
+      int j = Int32.Parse(a[1].Split('.')[0]);
+      return Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[5]);  
+    }
+
     public static double GetLowQualityBlocksNfiq(int[,] qualityMap)
     {
       double result = 0;
@@ -20,17 +73,19 @@ namespace Fuzzy1
       return result;
     }
 
+    
+
     public static double GetAverageQualityNfiq(int[,] qualityMap)
     {
-       // double[,] a = qualityMap.Select2D(x => (double)x);
-       // ImageHelper.SaveArrayAndOpen(a,Constants.qualityDb + "q2.bmp");
+      // double[,] a = qualityMap.Select2D(x => (double)x);
+      // ImageHelper.SaveArrayAndOpen(a,Constants.qualityDb + "q2.bmp");
       double result = 0;
       for (int i = 0; i < qualityMap.GetLength(0); i++)
       {
-          for (int j = 0; j < qualityMap.GetLength(1); j++)
-          {
-              result += qualityMap[i, j];
-          }          
+        for (int j = 0; j < qualityMap.GetLength(1); j++)
+        {
+          result += qualityMap[i, j];
+        }
       }
 
       //qualityMap.Select2D((x,y,val) => ( result+= val ));
@@ -55,7 +110,7 @@ namespace Fuzzy1
     {
       double numOfBlackPixels = 0;
       img.Select2D(x => numOfBlackPixels += (x < 100) ? 1 : 0);
-      return (numOfBlackPixels / (img.GetLength(0) * img.GetLength(1)))*100;
+      return (numOfBlackPixels / (img.GetLength(0) * img.GetLength(1))) * 100;
     }
 
     public static double GetBackgroundPercentage(double[,] img)

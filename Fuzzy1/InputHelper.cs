@@ -9,6 +9,7 @@ namespace Fuzzy1
 {
   public static class InputHelper
   {
+
     internal static List<double> GetMultymodalInput(string fileName1, string fileName2, string fileName3, string fileNameEt)
     {   
       List<double> res = new List<double>();
@@ -22,11 +23,11 @@ namespace Fuzzy1
       return res;
     }
 
-    internal static Tuple<InputVector,InputVector,InputVector> GetMultyFuzzyInput(string fileName1, string fileName2, string fileName3, string fileNameEt)
-    {      
-      var res1 = GetMonoFuzzyInput(fileName1, fileNameEt);
-      var res2 = GetMonoFuzzyInput(fileName2, fileNameEt);
-      var res3 = GetMonoFuzzyInput(fileName3, fileNameEt);
+    internal static Tuple<InputVector,InputVector,InputVector> GetMultyFuzzyInput(string fileName1, string fileName2, string fileName3, string fileNameEt, QualityHelper qhelper)
+    {
+      var res1 = GetMonoFuzzyInput(fileName1, fileNameEt, qhelper);
+      var res2 = GetMonoFuzzyInput(fileName2, fileNameEt, qhelper);
+      var res3 = GetMonoFuzzyInput(fileName3, fileNameEt,qhelper);
       Tuple<InputVector, InputVector, InputVector> res =
         new Tuple<InputVector, InputVector, InputVector>(res1, res2, res3);
       return res;
@@ -41,24 +42,25 @@ namespace Fuzzy1
       return identity;
     }
 
-    internal static InputVector GetMonoFuzzyInput(string fileName1, string fileNameEt)
+    internal static InputVector GetMonoFuzzyInput(string fileName1, string fileNameEt, QualityHelper qhelper)
     {
       var img1 = ImageHelper.LoadImage(Constants.PathToDb + fileName1);
       var imgEt = ImageHelper.LoadImage(Constants.PathToDb + fileNameEt);
 
       double identity1 = Matcher.GetIdentity(fileNameEt, imgEt, fileName1, img1);
 
-      var map = QualityHelper.GetQualityMap(Constants.PathToDb + fileName1);
-      double awerageQuality = QualityHelper.GetAverageQualityNfiq(map);
-      double badBlocks = QualityHelper.GetLowQualityBlocksNfiq(map);
-      double darkness = QualityHelper.GetDarkness(img1);
-      double background = QualityHelper.GetBackgroundPercentage(img1);
+      
+      //var map = QualityHelper.GetQualityMap(Constants.PathToDb + fileName1);
+      //double awerageQuality = QualityHelper.GetAverageQualityNfiq(map);
+      //double badBlocks = QualityHelper.GetLowQualityBlocksNfiq(map);
+      //double darkness = QualityHelper.GetDarkness(img1);
+      //double background = QualityHelper.GetBackgroundPercentage(img1);
 
       InputVector input = new InputVector();
-      input.AverageQuality = awerageQuality;
-      input.Background = background;
-      input.BadBlocks = badBlocks;
-      input.Darkness = darkness;
+      input.AverageQuality = qhelper.GetAverageQualityNfiqS(fileName1);
+      input.Background =  qhelper.GetBackgroundS(fileName1);
+      input.BadBlocks = qhelper.GetLowQualityBlocksNfiqS(fileName1);
+      input.Darkness = qhelper.GetDarknessS(fileName1);
       input.Identity = identity1;
       return input;
     }

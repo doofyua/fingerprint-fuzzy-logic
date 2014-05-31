@@ -19,6 +19,7 @@ namespace Fuzzy1
       File.AppendAllText(Constants.resultsPath + "FuzzySameTest.txt", strFirst);
 
       DecisionMaker decisionMaker = new DecisionMaker();
+      QualityHelper qhelper = new QualityHelper();
 
       for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
       {
@@ -34,7 +35,7 @@ namespace Fuzzy1
 
           foreach (var item in fpForMatch)
           {
-            var input = InputHelper.GetMultyFuzzyInput(item.Item1, item.Item2, item.Item3, fileNameEt);
+            var input = InputHelper.GetMultyFuzzyInput(item.Item1, item.Item2, item.Item3, fileNameEt,qhelper);
 
             var answer = decisionMaker.GetAnswer(input, threshold);
             switch (answer.ValueName)
@@ -69,6 +70,7 @@ namespace Fuzzy1
       File.AppendAllText(Constants.resultsPath + "FuzzyDifTest.txt", strFirst);
 
       DecisionMaker decisionMaker = new DecisionMaker();
+      QualityHelper qhelper = new QualityHelper();
 
       for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
       {
@@ -84,7 +86,7 @@ namespace Fuzzy1
 
           foreach (var item in fpForMatch)
           {
-            var input = InputHelper.GetMultyFuzzyInput(item.Item1, item.Item2, item.Item3, fileNameEt);
+            var input = InputHelper.GetMultyFuzzyInput(item.Item1, item.Item2, item.Item3, fileNameEt, qhelper);
 
             var answer = decisionMaker.GetAnswer(input, threshold);
             switch (answer.ValueName)
