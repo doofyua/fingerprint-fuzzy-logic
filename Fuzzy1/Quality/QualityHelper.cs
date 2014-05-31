@@ -22,8 +22,18 @@ namespace Fuzzy1
 
     public static double GetAverageQualityNfiq(int[,] qualityMap)
     {
+       // double[,] a = qualityMap.Select2D(x => (double)x);
+       // ImageHelper.SaveArrayAndOpen(a,Constants.qualityDb + "q2.bmp");
       double result = 0;
-      qualityMap.Select2D(x => result += x);
+      for (int i = 0; i < qualityMap.GetLength(0); i++)
+      {
+          for (int j = 0; j < qualityMap.GetLength(1); j++)
+          {
+              result += qualityMap[i, j];
+          }          
+      }
+
+      //qualityMap.Select2D((x,y,val) => ( result+= val ));
       result /= (qualityMap.GetLength(0) * qualityMap.GetLength(1));
       return result;
     }
