@@ -29,6 +29,9 @@ namespace Fuzzy1
 
     public const string resultsPath = @"D:\Fuzzy\res\";
 
-    public const string pathToMccParams = @"D:\diplom\MCCSdk v1.3\Sdk\MccMatchParams.xml";
+    public const string pathToMccParams = @"D:\source\diplom\MCCSdk v1.3\Sdk\MccMatchParams.xml";
+
+    //<=35
+    public const int numOfMatchForOneFinger = 5;
   }
 }

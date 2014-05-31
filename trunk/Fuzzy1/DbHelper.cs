@@ -52,7 +52,7 @@ namespace Fuzzy1
     public static int GetBestFingerprint(int fingerNum)
     {
       var qualityBest = File.ReadAllLines(Constants.qualityDb + "qualityBest.txt");
-      int res = Int32.Parse(qualityBest[fingerNum-1].Split()[1]);
+      int res = Int32.Parse(qualityBest[fingerNum - 1].Split()[1]);
       return res;
     }
 
@@ -64,7 +64,7 @@ namespace Fuzzy1
       {
         Tuple<string, string, string> newTuple
           = new Tuple<string, string, string>(
-            fingerNumber.ToString() + "_" + item.Item1.ToString()+".tif",
+            fingerNumber.ToString() + "_" + item.Item1.ToString() + ".tif",
             fingerNumber.ToString() + "_" + item.Item2.ToString() + ".tif",
             fingerNumber.ToString() + "_" + item.Item3.ToString() + ".tif");
         res.Add(newTuple);
@@ -84,7 +84,7 @@ namespace Fuzzy1
             Tuple<int, int, int> newTouple = new Tuple<int, int, int>(i, j, k);
             if (i == bestFingerprint)
             {
-              newTouple = new Tuple<int, int, int>(8, j, k);              
+              newTouple = new Tuple<int, int, int>(8, j, k);
             }
             if (j == bestFingerprint)
             {
@@ -95,6 +95,11 @@ namespace Fuzzy1
               newTouple = new Tuple<int, int, int>(i, j, 8);
             }
             res.Add(newTouple);
+            if (res.Count >= Constants.numOfMatchForOneFinger)
+            {
+              return res;
+            }
+
           }
         }
       }
@@ -106,7 +111,7 @@ namespace Fuzzy1
       List<Tuple<string, string, string>> res = new List<Tuple<string, string, string>>();
 
       Random rand = new Random();
-      while (res.Count < 35)
+      while (res.Count < Constants.numOfMatchForOneFinger)
       {
         int i1 = rand.Next(1, 101);
         int j1 = rand.Next(1, 9);
@@ -124,7 +129,7 @@ namespace Fuzzy1
               i2.ToString() + "_" + j2.ToString() + ".tif",
               i3.ToString() + "_" + j3.ToString() + ".tif");
           res.Add(newTouple);
-        }        
+        }
       }
       return res;
     }
