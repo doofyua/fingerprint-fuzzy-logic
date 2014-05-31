@@ -37,6 +37,7 @@ namespace Fuzzy1
       //File.AppendAllText(Constants.resultsPath + "time.txt", ".MultymodalVotSameTest " + j.ToString());
       //var h = Test.MultymodalVotDifTest(100, 0.01);
       //File.AppendAllText(Constants.resultsPath + "time.txt", "MultymodalVotDifTest " + h.ToString());
+
       int t = 3;
     }
 
