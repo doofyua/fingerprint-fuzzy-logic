@@ -11,9 +11,9 @@ namespace Fuzzy1
   public static class Test
   {
 
-    public static long FuzzySameTest(int numOfFps, double thresholdStep)
+    public static long FuzzySameTest(int step, double thresholdStep)
     {
-      numOfFps++;
+      
       Stopwatch w = Stopwatch.StartNew();
       string strFirst = String.Format("Threshold NumFull NumYes NumNo NumIdk\n");
       File.AppendAllText(Constants.resultsPath + "FuzzySameTest.txt", strFirst);
@@ -27,7 +27,7 @@ namespace Fuzzy1
         int numNo = 0;
         int numIdk = 0;
         int numAll = 0;
-        for (int j = 1; j < numOfFps; j++)
+        for (int j = 1; j < 101; j += step)
         {
           int bestFp = DbHelper.GetBestFingerprint(j);
           string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";
@@ -62,9 +62,9 @@ namespace Fuzzy1
       return w.ElapsedMilliseconds;
     }
 
-    public static long FuzzyDifTest(int numOfFps, double thresholdStep)
+    public static long FuzzyDifTest(int step, double thresholdStep)
     {
-      numOfFps++;
+     
       Stopwatch w = Stopwatch.StartNew();
       string strFirst = String.Format("Threshold NumFull NumYes NumNo NumIdk\n");
       File.AppendAllText(Constants.resultsPath + "FuzzyDifTest.txt", strFirst);
@@ -78,7 +78,7 @@ namespace Fuzzy1
         int numNo = 0;
         int numIdk = 0;
         int numAll = 0;
-        for (int j = 1; j < numOfFps; j++)
+        for (int j = 1; j < 101; j += step)
         {
           int bestFp = DbHelper.GetBestFingerprint(j);
           string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";
@@ -112,10 +112,10 @@ namespace Fuzzy1
       w.Stop();
       return w.ElapsedMilliseconds;
     }
-        
-    public static long MultymodalVotSameTest(int numOfFps, double thresholdStep)
+
+    public static long MultymodalVotSameTest(int step, double thresholdStep)
     {
-      numOfFps++;
+      
       Stopwatch w = Stopwatch.StartNew();
       string strFirst = String.Format("Threshold NumFull NumYes NumNo NumIdk\n");
       File.AppendAllText(Constants.resultsPath + "MultymodalVotSameTest.txt", strFirst);
@@ -124,7 +124,7 @@ namespace Fuzzy1
         int numYes = 0;
         int numNo = 0;
         int numAll = 0;
-        for (int j = 1; j < numOfFps; j++)
+        for (int j = 1; j < 101; j += step)
         {
           int bestFp = DbHelper.GetBestFingerprint(j);
           string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";
@@ -161,9 +161,9 @@ namespace Fuzzy1
 
     }
 
-    public static long MultymodalVotDifTest(int numOfFps, double thresholdStep)
+    public static long MultymodalVotDifTest(int step, double thresholdStep)
     {
-      numOfFps++;
+      
       Stopwatch w = Stopwatch.StartNew();
       string strFirst = String.Format("Threshold NumFull NumYes NumNo NumIdn\n");
       File.AppendAllText(Constants.resultsPath + "MultymodalVotDifTest.txt", strFirst);
@@ -172,7 +172,7 @@ namespace Fuzzy1
         int numYes = 0;
         int numNo = 0;
         int numAll = 0;
-        for (int j = 1; j < numOfFps; j++)
+        for (int j = 1; j < 101; j += step)
         {
           int bestFp = DbHelper.GetBestFingerprint(j);
           string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";
@@ -209,9 +209,9 @@ namespace Fuzzy1
       return w.ElapsedMilliseconds;
     }
 
-    public static long MultymodalAllSameTest(int numOfFps, double thresholdStep)
+    public static long MultymodalAllSameTest(int step, double thresholdStep)
     {
-      numOfFps++;
+     
       Stopwatch w = Stopwatch.StartNew();
       string strFirst = String.Format("Threshold NumFull NumYes NumNo NumIdk\n");
       File.AppendAllText(Constants.resultsPath + "MultymodalAllSameTest.txt", strFirst);
@@ -220,7 +220,7 @@ namespace Fuzzy1
         int numYes = 0;
         int numNo = 0;
         int numAll = 0;
-        for (int j = 1; j < numOfFps; j++)
+        for (int j = 1; j < 101; j += step)
         {
           int bestFp = DbHelper.GetBestFingerprint(j);
           string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";
@@ -247,9 +247,9 @@ namespace Fuzzy1
 
     }
 
-    public static long MultymodalAllDifTest(int numOfFps, double thresholdStep)
+    public static long MultymodalAllDifTest(int step, double thresholdStep)
     {
-      numOfFps++;
+      
       Stopwatch w = Stopwatch.StartNew();
       string strFirst = String.Format("Threshold NumFull NumYes NumNo NumIdk\n");
       File.AppendAllText(Constants.resultsPath + "MultymodalAllDifTest.txt", strFirst);
@@ -258,7 +258,7 @@ namespace Fuzzy1
         int numYes = 0;
         int numNo = 0;
         int numAll = 0;
-        for (int j = 1; j < numOfFps; j++)
+        for (int j = 1; j < 101; j += step)
         {
           int bestFp = DbHelper.GetBestFingerprint(j);
           string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";
@@ -284,9 +284,9 @@ namespace Fuzzy1
       return w.ElapsedMilliseconds;
     }
 
-    public static long MonomodalSameTest(int numOfFps, double thresholdStep)
+    public static long MonomodalSameTest(int step, double thresholdStep)
     {
-      numOfFps++;
+      
       Stopwatch w = Stopwatch.StartNew();
       string strFirst = String.Format("Threshold NumFull NumYes NumNo NumIdk\n");
       File.AppendAllText(Constants.resultsPath + "MonomodalSameTest.txt", strFirst);
@@ -297,7 +297,7 @@ namespace Fuzzy1
         int numNo = 0;
         int numAll = 0;
 
-        for (int j = 1; j < numOfFps; j++)
+        for (int j = 1; j < 101; j += step)
         {          
           int bestFp = DbHelper.GetBestFingerprint(j);
           string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";
@@ -348,9 +348,9 @@ namespace Fuzzy1
       return w.ElapsedMilliseconds;
     }
 
-    public static long MonomodalDifTest(int numOfFps,double thresholdStep)
+    public static long MonomodalDifTest(int step,double thresholdStep)
     {
-      numOfFps++;
+      
       Stopwatch w = Stopwatch.StartNew();
       string strFirst = String.Format("Threshold NumFull NumYes NumNo NumIdk\n");
       File.AppendAllText(Constants.resultsPath + "MonomodalSameTest.txt", strFirst);
@@ -361,7 +361,7 @@ namespace Fuzzy1
         int numNo = 0;
         int numAll = 0;
 
-        for (int j = 1; j < numOfFps; j++)
+        for (int j = 1; j < 101; j+=step)
         {
           int bestFp = DbHelper.GetBestFingerprint(j);
           string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";

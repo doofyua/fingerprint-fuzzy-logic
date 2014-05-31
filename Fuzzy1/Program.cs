@@ -21,22 +21,23 @@ namespace Fuzzy1
     {
       //DbHelper.GetQualityDb();
       //DbHelper.SaveBestQualityFingerprint();
-      var a = Test.FuzzySameTest(1, 0.5);
-      File.AppendAllText(Constants.resultsPath + "time.txt", "FuzzySameTest " + a.ToString());        
-      var b = Test.FuzzyDifTest(1, 0.5);
-      File.AppendAllText(Constants.resultsPath + "time.txt", "FuzzyDifTest " + b.ToString());
-      //var c = Test.MonomodalSameTest(100, 0.01);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", "MonomodalSameTest " + c.ToString());
-      //var d = Test.MonomodalDifTest(100, 0.01);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", "MonomodalDifTest " + d.ToString());
-      //var e = Test.MultymodalAllSameTest(100, 0.01);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", "MultymodalAllSameTest " + e.ToString());
-      //var f = Test.MultymodalAllDifTest(100, 0.01);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", "MultymodalAllDifTest " + f.ToString());
-      //var j = Test.MultymodalVotSameTest(100, 0.01);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", ".MultymodalVotSameTest " + j.ToString());
+
+      //var a = Test.FuzzySameTest(20, 0.01);
+      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzySameTest " + a.ToString());        
+      //var b = Test.FuzzyDifTest(20, 0.01);
+      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzyDifTest " + b.ToString());
+      var c = Test.MonomodalSameTest(20, 0.01);
+      File.AppendAllText(Constants.resultsPath + "time.txt", "\n MonomodalSameTest " + c.ToString());
+      var d = Test.MonomodalDifTest(20, 0.01);
+      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MonomodalDifTest " + d.ToString());
+      //var e = Test.MultymodalAllSameTest(20, 0.01);
+      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalAllSameTest " + e.ToString());
+      //var f = Test.MultymodalAllDifTest(20, 0.01);
+      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalAllDifTest " + f.ToString());
+      //var j = Test.MultymodalVotSameTest(20, 0.01);
+      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotSameTest " + j.ToString());
       //var h = Test.MultymodalVotDifTest(100, 0.01);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", "MultymodalVotDifTest " + h.ToString());
+      //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotDifTest " + h.ToString());
 
       int t = 3;
     }
