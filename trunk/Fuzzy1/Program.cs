@@ -19,7 +19,7 @@ namespace Fuzzy1
 
     static void Main(string[] args)
     {
-      DbHelper.GetQualityDb();
+      //DbHelper.GetQualityDb();
       DbHelper.SaveBestQualityFingerprint();
       //var a = Test.FuzzySameTest(100, 0.01);
       //File.AppendAllText(Constants.resultsPath + "time.txt", "FuzzySameTest " + a.ToString());        

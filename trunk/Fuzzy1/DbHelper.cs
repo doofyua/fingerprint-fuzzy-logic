@@ -25,11 +25,11 @@ namespace Fuzzy1
 
     public static void SaveBestQualityFingerprint()
     {
-      if (!File.Exists(Constants.qualityDb + "qualityAll.txt"))
-      {
-        GetQualityDb();
-      }
-      var qualityDb = File.ReadAllLines(Constants.qualityDb + "qualityAll.txt");
+      //if (!File.Exists(Constants.qualityDb + "qualityAll.txt"))
+      //{
+      //  GetQualityDb();
+      //}
+      var qualityDb = File.ReadAllLines(Constants.qualityDb + "qualityTest1.csv");
       for (int i = 1; i < 101; i++)
       {
         double maxQuality = Double.MinValue;
@@ -37,7 +37,7 @@ namespace Fuzzy1
         for (int j = 1; j < 9; j++)
         {
           var strs = qualityDb[(i - 1) * 8 + j - 1].Split();
-          double quality = Double.Parse(strs[2]);
+          double quality = Double.Parse(strs[3]);
           if (quality > maxQuality)
           {
             maxQuality = quality;
