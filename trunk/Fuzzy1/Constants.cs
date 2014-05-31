@@ -21,7 +21,7 @@ namespace Fuzzy1
     public const string PathToAnswerRules = @"../../AnswerRules.txt";
 
     public const string PathToDb = @"D:\Fuzzy\db\";
-    public const string PathToDb2 = @"D:\Учеба\Было\fingerprint\Handbook II Ed\FVC2000\Dbs\Db2_b\10";
+    //public const string PathToDb2 = @"D:\Учеба\Было\fingerprint\Handbook II Ed\FVC2000\Dbs\Db2_b\10";
 
     public const string pathToTemplatesDb = @"D:\Fuzzy\TemplateDB\";
 
@@ -29,7 +29,7 @@ namespace Fuzzy1
 
     public const string resultsPath = @"D:\Fuzzy\res\";
 
-    public const string pathToMccParams = @"D:\source\diplom\MCCSdk v1.3\Sdk\MccMatchParams.xml";
+    public const string pathToMccParams = @"D:\diplom\MCCSdk v1.3\Sdk\MccMatchParams.xml";
 
     //<=35
     public const int numOfMatchForOneFinger = 5;
