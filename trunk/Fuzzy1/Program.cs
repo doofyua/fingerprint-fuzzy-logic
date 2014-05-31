@@ -20,8 +20,8 @@ namespace Fuzzy1
     static void Main(string[] args)
     {
       //DbHelper.GetQualityDb();
-      DbHelper.SaveBestQualityFingerprint();
-      //var a = Test.FuzzySameTest(100, 0.01);
+      //DbHelper.SaveBestQualityFingerprint();
+      var a = Test.FuzzySameTest(3, 0.5);
       //File.AppendAllText(Constants.resultsPath + "time.txt", "FuzzySameTest " + a.ToString());        
       //var b = Test.FuzzyDifTest(100, 0.01);
       //File.AppendAllText(Constants.resultsPath + "time.txt", "FuzzyDifTest " + b.ToString());
@@ -82,13 +82,13 @@ namespace Fuzzy1
 
     private static void OneFullCycle(string fileName1, string fileName2, string fileName3, string fileNameEt)
     {
-      var fuzzyInput =  InputHelper.GetMultyFuzzyInput(fileName1, fileName2, fileName3, fileNameEt);
+      //var fuzzyInput =  InputHelper.GetMultyFuzzyInput(fileName1, fileName2, fileName3, fileNameEt);
 
-      DecisionMaker m = new DecisionMaker();
-      double threshold = 0.5;
-      var answer = m.GetAnswer(fuzzyInput, threshold);
-      string a = answer.ValueName;
-      double i = answer.Membership;
+      //DecisionMaker m = new DecisionMaker();
+      //double threshold = 0.5;
+      //var answer = m.GetAnswer(fuzzyInput, threshold);
+      //string a = answer.ValueName;
+      //double i = answer.Membership;
      
 
     }
