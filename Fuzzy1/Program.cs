@@ -21,10 +21,10 @@ namespace Fuzzy1
     {
       //DbHelper.GetQualityDb();
       //DbHelper.SaveBestQualityFingerprint();
-      var a = Test.FuzzySameTest(3, 0.5);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", "FuzzySameTest " + a.ToString());        
-      //var b = Test.FuzzyDifTest(100, 0.01);
-      //File.AppendAllText(Constants.resultsPath + "time.txt", "FuzzyDifTest " + b.ToString());
+      var a = Test.FuzzySameTest(1, 0.5);
+      File.AppendAllText(Constants.resultsPath + "time.txt", "FuzzySameTest " + a.ToString());        
+      var b = Test.FuzzyDifTest(1, 0.5);
+      File.AppendAllText(Constants.resultsPath + "time.txt", "FuzzyDifTest " + b.ToString());
       //var c = Test.MonomodalSameTest(100, 0.01);
       //File.AppendAllText(Constants.resultsPath + "time.txt", "MonomodalSameTest " + c.ToString());
       //var d = Test.MonomodalDifTest(100, 0.01);
