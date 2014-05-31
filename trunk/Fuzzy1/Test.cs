@@ -17,7 +17,7 @@ namespace Fuzzy1
       Stopwatch w = Stopwatch.StartNew();
       string strFirst = String.Format("Threshold NumFull NumYes NumNo NumIdk\n");
       File.AppendAllText(Constants.resultsPath + "FuzzySameTest.txt", strFirst);
-      
+
       DecisionMaker decisionMaker = new DecisionMaker();
 
       for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
@@ -31,7 +31,7 @@ namespace Fuzzy1
           int bestFp = DbHelper.GetBestFingerprint(j);
           string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";
           var fpForMatch = DbHelper.GetTestingFingerprintSame(j, bestFp);
-          
+
           foreach (var item in fpForMatch)
           {
             var input = InputHelper.GetMultyFuzzyInput(item.Item1, item.Item2, item.Item3, fileNameEt);
@@ -52,24 +52,22 @@ namespace Fuzzy1
                 break;
             }
             numAll++;
-          }
-            
+          }         
+        }
         string str = String.Format("{0} {1} {2} {3} {4}\n", threshold, numAll, numYes, numNo, numIdk);
         File.AppendAllText(Constants.resultsPath + "FuzzySameTest.txt", str);
       }
       w.Stop();
       return w.ElapsedMilliseconds;
-        
     }
-    }
-      
+
     public static long FuzzyDifTest(int numOfFps, double thresholdStep)
     {
       numOfFps++;
       Stopwatch w = Stopwatch.StartNew();
       string strFirst = String.Format("Threshold NumFull NumYes NumNo NumIdk\n");
       File.AppendAllText(Constants.resultsPath + "FuzzyDifTest.txt", strFirst);
-      
+
       DecisionMaker decisionMaker = new DecisionMaker();
 
       for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
@@ -82,7 +80,7 @@ namespace Fuzzy1
         {
           int bestFp = DbHelper.GetBestFingerprint(j);
           string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";
-          var fpForMatch = DbHelper.GetTestingFingerprintSame(j, bestFp);
+          var fpForMatch = DbHelper.GetTestingFingerprintDiff(j);
 
           foreach (var item in fpForMatch)
           {
@@ -105,15 +103,14 @@ namespace Fuzzy1
             }
             numAll++;
           }
-          string str = String.Format("{0} {1} {2} {3} {4}\n", threshold, numAll, numYes, numNo, numIdk);
-          File.AppendAllText(Constants.resultsPath + "FuzzyDifTest.txt", str);
         }
+        string str = String.Format("{0} {1} {2} {3} {4}\n", threshold, numAll, numYes, numNo, numIdk);
+        File.AppendAllText(Constants.resultsPath + "FuzzyDifTest.txt", str);
       }
       w.Stop();
       return w.ElapsedMilliseconds;
     }
-      
-
+        
     public static long MultymodalVotSameTest(int numOfFps, double thresholdStep)
     {
       numOfFps++;
