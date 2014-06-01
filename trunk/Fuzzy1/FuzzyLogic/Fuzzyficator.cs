@@ -85,9 +85,9 @@ namespace Fuzzy1
       {
         return 1;
       }
-      if (x > 15 && x <= 70)
+      if (x > 15 && x <= 50)
       {
-        return x * (1.0 / 55) - (3.0 / 11);
+        return x * (1.0 / 35) - (3.0 / 7);
       }
       return 0;
     }
@@ -97,9 +97,9 @@ namespace Fuzzy1
       {
         return 1;
       }
-      if (x >= 15 && x < 70)
+      if (x >= 15 && x < 50)
       {
-        return -(1.0 / 55) * x + (14.0 / 11);
+        return -(1.0 / 35) * x + (10.0 / 7);
       }
       return 0;
     }
@@ -114,25 +114,25 @@ namespace Fuzzy1
     }
     private static double LittleLowQualityBlocksFunction(double x)
     {
-      if (x < 19)
+      if (x < 18)
       {
         return 1;
       }
-      if (x >= 19 && x < 26)
+      if (x >= 18 && x < 26)
       {
-        return 3*Math.Sqrt(Math.PI*2) * Gaussian.Gaussian1D((x - 19),3);
+        return 3*Math.Sqrt(Math.PI*2) * Gaussian.Gaussian1D((x - 18),3);
       }
       return 0;
     }
     private static double ManyLowQualityBlocksFunction(double x)
     {
-      if (x < 19)
+      if (x < 18)
       {
         return 0;
       }
-      if (x >= 19 && x < 26)
+      if (x >= 18 && x < 25)
       {
-          return 3 * Math.Sqrt(Math.PI * 2) * Gaussian.Gaussian1D(-x + 26, 3);
+          return 3 * Math.Sqrt(Math.PI * 2) * Gaussian.Gaussian1D(-x + 25, 3);
       }
       return 1;
     }
@@ -151,13 +151,13 @@ namespace Fuzzy1
     //}
     private static double LowQualityNfiqFunction(double x)
     {
-      if (x < 1)
+      if (x < 1.3)
       {
         return 1;
       }
       else
       {
-        return Math.Pow(3, (-x + 1));
+        return Math.Pow(3, (-x + 1.3));
       }
     }
     private static double HighQualityNfiqFunction(double x)
