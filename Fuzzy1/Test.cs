@@ -11,7 +11,7 @@ namespace Fuzzy1
     public static class Test
     {
 
-        public static long FuzzySameTest(int step, double thresholdStep)
+        public static long FuzzySameTest(int step, double thresholdStep, double startThreshold, double endThreshold)
         {
 
             Stopwatch w = Stopwatch.StartNew();
@@ -34,7 +34,7 @@ namespace Fuzzy1
             }
 
 
-            for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
+            for (double threshold = startThreshold; threshold < endThreshold + 0.001; threshold += thresholdStep)
             {
                 int numYes = 0;
                 int numNo = 0;
@@ -77,7 +77,7 @@ namespace Fuzzy1
             return w.ElapsedMilliseconds;
         }
 
-        public static long FuzzyDifTest(int step, double thresholdStep)
+        public static long FuzzyDifTest(int step, double thresholdStep, double startThreshold, double endThreshold)
         {
 
             Stopwatch w = Stopwatch.StartNew();
@@ -98,8 +98,8 @@ namespace Fuzzy1
                 int bestFp = DbHelper.GetBestFingerprint(j);
                 BestFp.Add(j, bestFp);
             }
-            
-            for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
+
+            for (double threshold = startThreshold; threshold < endThreshold + 0.001; threshold += thresholdStep)
             {
                 int numYes = 0;
                 int numNo = 0;
@@ -141,7 +141,7 @@ namespace Fuzzy1
             return w.ElapsedMilliseconds;
         }
 
-        public static long MultymodalVotSameTest(int step, double thresholdStep)
+        public static long MultymodalVotSameTest(int step, double thresholdStep, double startThreshold, double endThreshold)
         {
 
             Stopwatch w = Stopwatch.StartNew();
@@ -162,7 +162,7 @@ namespace Fuzzy1
             }
 
 
-            for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
+            for (double threshold = startThreshold; threshold < endThreshold + 0.001; threshold += thresholdStep)
             {
                 int numYes = 0;
                 int numNo = 0;
@@ -205,7 +205,7 @@ namespace Fuzzy1
 
         }
 
-        public static long MultymodalVotDifTest(int step, double thresholdStep)
+        public static long MultymodalVotDifTest(int step, double thresholdStep, double startThreshold, double endThreshold)
         {
 
             Stopwatch w = Stopwatch.StartNew();
@@ -227,7 +227,7 @@ namespace Fuzzy1
                 BestFp.Add(j, bestFp);
             }
 
-            for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
+            for (double threshold = startThreshold; threshold < endThreshold + 0.001; threshold += thresholdStep)
             {
                 int numYes = 0;
                 int numNo = 0;
@@ -239,6 +239,7 @@ namespace Fuzzy1
                     var fpForMatch = fpForMatchDictionary[j];
 
                     string fileNameEt = j.ToString() + "_" + bestFp.ToString() + ".tif";
+
                     foreach (var item in fpForMatch)
                     {
                         var input = InputHelper.GetMultymodalInput(item.Item1, item.Item2, item.Item3, fileNameEt);
@@ -270,7 +271,7 @@ namespace Fuzzy1
             return w.ElapsedMilliseconds;
         }
 
-        public static long MultymodalAllSameTest(int step, double thresholdStep)
+        public static long MultymodalAllSameTest(int step, double thresholdStep, double startThreshold, double endThreshold)
         {
 
             Stopwatch w = Stopwatch.StartNew();
@@ -290,7 +291,7 @@ namespace Fuzzy1
             }
 
 
-            for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
+            for (double threshold = startThreshold; threshold < endThreshold + 0.001; threshold += thresholdStep)
             {
                 int numYes = 0;
                 int numNo = 0;
@@ -324,7 +325,7 @@ namespace Fuzzy1
 
         }
 
-        public static long MultymodalAllDifTest(int step, double thresholdStep)
+        public static long MultymodalAllDifTest(int step, double thresholdStep, double startThreshold, double endThreshold)
         {
 
             Stopwatch w = Stopwatch.StartNew();
@@ -346,7 +347,7 @@ namespace Fuzzy1
                 BestFp.Add(j, bestFp);
             }
 
-            for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
+            for (double threshold = startThreshold; threshold < endThreshold + 0.001; threshold += thresholdStep)
             {
                 int numYes = 0;
                 int numNo = 0;
@@ -379,7 +380,7 @@ namespace Fuzzy1
             return w.ElapsedMilliseconds;
         }
 
-        public static long MonomodalSameTest(int step, double thresholdStep)
+        public static long MonomodalSameTest(int step, double thresholdStep, double startThreshold, double endThreshold)
         {
 
             Stopwatch w = Stopwatch.StartNew();
@@ -399,7 +400,7 @@ namespace Fuzzy1
             }
 
 
-            for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
+            for (double threshold = startThreshold; threshold < endThreshold + 0.001; threshold += thresholdStep)
             {
                 int numYes = 0;
                 int numNo = 0;
@@ -455,7 +456,7 @@ namespace Fuzzy1
             return w.ElapsedMilliseconds;
         }
 
-        public static long MonomodalDifTest(int step, double thresholdStep)
+        public static long MonomodalDifTest(int step, double thresholdStep, double startThreshold, double endThreshold)
         {
 
             Stopwatch w = Stopwatch.StartNew();
@@ -477,7 +478,7 @@ namespace Fuzzy1
                 BestFp.Add(j, bestFp);
             }
 
-            for (double threshold = 0.01; threshold < 1; threshold += thresholdStep)
+            for (double threshold = startThreshold; threshold < endThreshold + 0.001; threshold += thresholdStep)
             {
                 int numYes = 0;
                 int numNo = 0;
