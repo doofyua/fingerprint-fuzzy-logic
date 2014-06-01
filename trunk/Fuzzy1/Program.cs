@@ -22,10 +22,10 @@ namespace Fuzzy1
       //DbHelper.GetQualityDb();
       //DbHelper.SaveBestQualityFingerprint();
 
-        var a = Test.FuzzySameTest(1, 0.005, 0.51, 0.55);
-        File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzySameTest(1, 0.005, 0.51, 0.55) " + a.ToString());
-        var b = Test.FuzzyDifTest(1, 0.005, 0.51, 0.55);
-        File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzyDifTest(1, 0.005, 0.51, 0.55);  " + b.ToString());
+        //var a = Test.FuzzySameTest(1, 0.005, 0.51, 0.55);
+        //File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzySameTest(1, 0.005, 0.51, 0.55) " + a.ToString());
+        //var b = Test.FuzzyDifTest(1, 0.005, 0.51, 0.55);
+        //File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzyDifTest(1, 0.005, 0.51, 0.55);  " + b.ToString());
 
         //var c = Test.MonomodalSameTest(1, 0.005, 0.51, 0.55);
         //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MonomodalSameTest(1, 0.005, 0.51, 0.55);  " + c.ToString());
@@ -37,10 +37,10 @@ namespace Fuzzy1
         //var f = Test.MultymodalAllDifTest(1, 0.005, 0.51, 0.55);
         //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalAllDifTest(1, 0.005, 0.51, 0.55); " + f.ToString());
 
-        //var j = Test.MultymodalVotSameTest(1, 0.005, 0.51, 0.55);
-        //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotSameTest(1, 0.005, 0.51, 0.55); " + j.ToString());
-        //var h = Test.MultymodalVotDifTest(1, 0.005, 0.51, 0.55);
-        //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotDifTest(1, 0.005, 0.51, 0.55); " + h.ToString());
+        var j = Test.MultymodalVotSameTest(1, 0.005, 0.51, 0.55);
+        File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotSameTest(1, 0.005, 0.51, 0.55); " + j.ToString());
+        var h = Test.MultymodalVotDifTest(1, 0.005, 0.51, 0.55);
+        File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotDifTest(1, 0.005, 0.51, 0.55); " + h.ToString());
 
       int t = 3;
     }
