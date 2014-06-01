@@ -17,53 +17,85 @@ namespace Fuzzy1
     public QualityHelper()
     {
       quality = new List<string[]>();
-      var qualityDb = File.ReadAllLines(Constants.qualityDb + "qualityTest1.csv");
-      for (int i = 1; i < 101; i++)
+      if (File.Exists(Constants.qualityDb + "qualityTest1.csv"))
       {
-        for (int j = 1; j < 9; j++)
-        {
-          string[] strs = qualityDb[(i - 1) * 8 + j - 1].Split();
-          // double quality = Double.Parse(strs[3]);
-          quality.Add(strs);
-        }
+          var qualityDb = File.ReadAllLines(Constants.qualityDb + "qualityTest1.csv");
+          for (int i = 1; i < 101; i++)
+          {
+              for (int j = 1; j < 9; j++)
+              {
+                  string[] strs = qualityDb[(i - 1) * 8 + j - 1].Split();
+                  // double quality = Double.Parse(strs[3]);
+                  quality.Add(strs);
+              }
+          }
       }
+      
     }
 
     public double GetLowQualityBlocksNfiqS(string fileName1)
-    { 
-     var a = fileName1.Split('_');
+    {
+        if (quality.Count > 0)
+        {
+            var a = fileName1.Split('_');
 
-      int i = Int32.Parse( a[0]);
-      int j = Int32.Parse( (a[1].Split('.'))[0]);
-      return 100 * Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[2]);      
+            int i = Int32.Parse(a[0]);
+            int j = Int32.Parse((a[1].Split('.'))[0]);
+            return 100 * Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[2]);
+        }
+        else
+        {
+           return GetLowQualityBlocksNfiq(GetQualityMap(Constants.PathToDb + fileName1));
+        }
+  
     }
 
     public double GetAverageQualityNfiqS(string fileName1)
     {
-      var a = fileName1.Split('_');
-      int i = Int32.Parse(a[0]);
-      int j = Int32.Parse(a[1].Split('.')[0]);
-      return  Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[3]);
-      
+        if (quality.Count > 0)
+        {
+            var a = fileName1.Split('_');
+            int i = Int32.Parse(a[0]);
+            int j = Int32.Parse(a[1].Split('.')[0]);
+            return Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[3]);
+        }
+        else
+        {
+            return GetAverageQualityNfiq(GetQualityMap(Constants.PathToDb + fileName1));
+        }
     }
 
     public double GetDarknessS(string fileName1)
     {
-      var a = fileName1.Split('_');
-      int i = Int32.Parse(a[0]);
-      int j = Int32.Parse(a[1].Split('.')[0]);
+        if (quality.Count > 0)
+        {
+            var a = fileName1.Split('_');
+            int i = Int32.Parse(a[0]);
+            int j = Int32.Parse(a[1].Split('.')[0]);
 
-      return 100 * Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[4]);
+            return 100 * Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[4]);
+        }
+        else
+        {
+            return GetDarkness(Constants.PathToDb + fileName1);
+        }
     }
 
     public double GetBackgroundS(string fileName1)
     {
-      var a = fileName1.Split('_');
-      int i = Int32.Parse(a[0]);
-      int j = Int32.Parse(a[1].Split('.')[0]);
-      return 100 * Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[5]);  
+        if (quality.Count > 0)
+        {
+            var a = fileName1.Split('_');
+            int i = Int32.Parse(a[0]);
+            int j = Int32.Parse(a[1].Split('.')[0]);
+            return 100 * Double.Parse(quality.Find(x => Int32.Parse(x[0]) == i && Int32.Parse(x[1]) == j)[5]);
+        }
+        else
+        {
+            return GetBackgroundPercentage(ImageHelper.LoadImage(Constants.PathToDb + fileName1));
+        }
     }
-
+      
     public static double GetLowQualityBlocksNfiq(int[,] qualityMap)
     {
       double result = 0;
