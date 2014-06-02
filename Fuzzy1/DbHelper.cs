@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace Fuzzy1
 {
-  public static class DbHelper
+  public  class DbHelper
   {
+      Random rand;
+      public DbHelper()
+      {
+          rand = new Random();
+      }
     public static void GetQualityDb()
     {
       for (int i = 41; i < 101; i++)
@@ -29,7 +34,7 @@ namespace Fuzzy1
       //{
       //  GetQualityDb();
       //}
-      var qualityDb = File.ReadAllLines(Constants.qualityDb + "qualityTest1.csv");
+      var qualityDb = File.ReadAllLines(Constants.qualityDb + "qualityTest2.txt");
       for (int i = 1; i < 101; i++)
       {
         double maxQuality = Double.MinValue;
@@ -75,24 +80,24 @@ namespace Fuzzy1
     public static List<Tuple<int, int, int>> GetTestingFingerprintNumSame(int bestFingerprint)
     {
       List<Tuple<int, int, int>> res = new List<Tuple<int, int, int>>();
-      for (int i = 1; i < 8; i++)
+      for (int i = 8; i > 1; i--)
       {
-        for (int j = i + 1; j < 8; j++)
+          for (int j = i-1; j > 1; j--)
         {
-          for (int k = j + 1; k < 8; k++)
+            for (int k = j-1; k > 1; k--)
           {
             Tuple<int, int, int> newTouple = new Tuple<int, int, int>(i, j, k);
             if (i == bestFingerprint)
             {
-              newTouple = new Tuple<int, int, int>(8, j, k);
+              newTouple = new Tuple<int, int, int>(1, j, k);
             }
             if (j == bestFingerprint)
             {
-              newTouple = new Tuple<int, int, int>(i, 8, k);
+              newTouple = new Tuple<int, int, int>(i,1, k);
             }
             if (k == bestFingerprint)
             {
-              newTouple = new Tuple<int, int, int>(i, j, 8);
+              newTouple = new Tuple<int, int, int>(i, j, 1);
             }
             res.Add(newTouple);
             if (res.Count >= Constants.numOfMatchForOneFinger)
@@ -106,22 +111,24 @@ namespace Fuzzy1
       return res;
     }
 
-    public static List<Tuple<string, string, string>> GetTestingFingerprintDiff(int fingerNum)
+    public  List<Tuple<string, string, string>> GetTestingFingerprintDiff(int fingerNum)
     {
       List<Tuple<string, string, string>> res = new List<Tuple<string, string, string>>();
 
-      Random rand = new Random();
+      
       while (res.Count < Constants.numOfMatchForOneFinger)
       {
         int i1 = rand.Next(1, 101);
-        int j1 = rand.Next(1, 9);
+        //int j1 = rand.Next(1, 9);
+        int j1 = 1;
+
 
         int i2 = rand.Next(1, 101);
-        int j2 = rand.Next(1, 9);
-
+        //int j2 = rand.Next(1, 9);
+        int j2 = 1;
         int i3 = rand.Next(1, 101);
-        int j3 = rand.Next(1, 9);
-
+        //int j3 = rand.Next(1, 9);
+        int j3 = 1;
         if (i1 != fingerNum && i2 != fingerNum && i3 != fingerNum)
         {
           Tuple<string, string, string> newTouple =

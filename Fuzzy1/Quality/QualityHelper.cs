@@ -17,9 +17,9 @@ namespace Fuzzy1
     public QualityHelper()
     {
       quality = new List<string[]>();
-      if (File.Exists(Constants.qualityDb + "qualityTest1.csv"))
+      if (File.Exists(Constants.qualityDb + "qualityTest2.txt"))
       {
-          var qualityDb = File.ReadAllLines(Constants.qualityDb + "qualityTest1.csv");
+          var qualityDb = File.ReadAllLines(Constants.qualityDb + "qualityTest2.txt");
           for (int i = 1; i < 101; i++)
           {
               for (int j = 1; j < 9; j++)
