@@ -13,19 +13,20 @@ namespace Fuzzy1
 {
   class Program
   {
-    private static string pathToDb = @"D:\Учеба\Было\fingerprint\Handbook II Ed\FVC2000\Dbs\Db2_a\";
-    private static string pathToTemplatesDb = @"D:\TemplateDB\";
-    private static string pathToRules = @"..\..\Rules.txt";
+    //private static string pathToDb = @"D:\Учеба\Было\fingerprint\Handbook II Ed\FVC2000\Dbs\Db2_a\";
+    //private static string pathToTemplatesDb = @"D:\TemplateDB\";
+    //private static string pathToRules = @"..\..\Rules.txt";
 
     static void Main(string[] args)
     {
+        //OneFingerQualityTest();
       //DbHelper.GetQualityDb();
       //DbHelper.SaveBestQualityFingerprint();
 
-        //var a = Test.FuzzySameTest(1, 0.005, 0.51, 0.55);
-        //File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzySameTest(1, 0.005, 0.51, 0.55) " + a.ToString());
-        //var b = Test.FuzzyDifTest(1, 0.005, 0.51, 0.55);
-        //File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzyDifTest(1, 0.005, 0.51, 0.55);  " + b.ToString());
+        var a = Test.FuzzySameTest(1, 0.005, 0.525, 0.54);
+        File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzySameTest(1, 0.005, 0.525, 0.54); " + a.ToString());
+        var b = Test.FuzzyDifTest(1, 0.005, 0.525, 0.54);
+        File.AppendAllText(Constants.resultsPath + "time.txt", "\n FuzzyDifTest(1, 0.005, 0.525, 0.54);  " + b.ToString());
 
         //var c = Test.MonomodalSameTest(1, 0.005, 0.51, 0.55);
         //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MonomodalSameTest(1, 0.005, 0.51, 0.55);  " + c.ToString());
@@ -37,10 +38,10 @@ namespace Fuzzy1
         //var f = Test.MultymodalAllDifTest(1, 0.005, 0.51, 0.55);
         //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalAllDifTest(1, 0.005, 0.51, 0.55); " + f.ToString());
 
-        var j = Test.MultymodalVotSameTest(1, 0.005, 0.51, 0.55);
-        File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotSameTest(1, 0.005, 0.51, 0.55); " + j.ToString());
-        var h = Test.MultymodalVotDifTest(1, 0.005, 0.51, 0.55);
-        File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotDifTest(1, 0.005, 0.51, 0.55); " + h.ToString());
+        //var j = Test.MultymodalVotSameTest(1, 0.005, 0.51, 0.55);
+        //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotSameTest(1, 0.005, 0.51, 0.55); " + j.ToString());
+        //var h = Test.MultymodalVotDifTest(1, 0.005, 0.51, 0.55);
+        //File.AppendAllText(Constants.resultsPath + "time.txt", "\n MultymodalVotDifTest(1, 0.005, 0.51, 0.55); " + h.ToString());
 
       int t = 3;
     }
@@ -55,19 +56,20 @@ namespace Fuzzy1
 
     private static void DBTest()
     {
+        DbHelper dbHelper = new DbHelper();
       int a = DbHelper.GetBestFingerprint(5);
       var b = DbHelper.GetTestingFingerprintSame(100, DbHelper.GetBestFingerprint(100));
-      var c = DbHelper.GetTestingFingerprintDiff(100);
+      var c = dbHelper.GetTestingFingerprintDiff(100);
       //DbHelper.FindBestQualityFingerprint();
     }
 
     private static void OneFingerTest(string fileName1, string fileName2)
     {
-      var img1 = ImageHelper.LoadImage(pathToDb + fileName1);
-      var img2 = ImageHelper.LoadImage(pathToDb + fileName2);
-      double identity1 = Matcher.GetIdentity(pathToDb + fileName2, pathToDb + fileName1);
+      var img1 = ImageHelper.LoadImage(Constants.PathToDb + fileName1);
+      var img2 = ImageHelper.LoadImage(Constants.PathToDb + fileName2);
+      double identity1 = Matcher.GetIdentity( fileName2,  fileName1);
 
-      var map = QualityHelper.GetQualityMap(pathToDb + fileName1);
+      var map = QualityHelper.GetQualityMap(Constants.PathToDb + fileName1);
       double awerageQuality = QualityHelper.GetAverageQualityNfiq(map);
       double badBlocks = QualityHelper.GetLowQualityBlocksNfiq(map);
       double darkness = QualityHelper.GetDarkness(img1);
@@ -104,8 +106,8 @@ namespace Fuzzy1
         for (int j = 1; j < 9; j++)
         {
           string fileName = i + "_" + j + ".tif";
-          double[,] img = ImageHelper.LoadImage(pathToDb + fileName);
-          Matcher.SaveTemplate(img, pathToTemplatesDb + fileName);
+          double[,] img = ImageHelper.LoadImage(Constants.PathToDb + fileName);
+          Matcher.SaveTemplate(img, Constants.pathToTemplatesDb + fileName);
 
         }
         
@@ -125,7 +127,7 @@ namespace Fuzzy1
 
     private static void RuleParserTest()
     {
-      List<Rule> rules = RuleParser.Parse(pathToRules);
+        List<Rule> rules = RuleParser.Parse(Constants.PathToAnswerRules);
       int i = 1;
     }
 
@@ -141,14 +143,14 @@ namespace Fuzzy1
         double normalAverage = 0;
         for (int i = 0; i < darkFingerprins.Count; i++)
         {
-          var image = ImageHelper.LoadImage(pathToDb + darkFingerprins[i] + ".tif");
+            var image = ImageHelper.LoadImage(Constants.PathToDb + darkFingerprins[i] + ".tif");
           darkAverage += QualityHelper.GetDarkness(image);
         }
         darkAverage /= darkFingerprins.Count;
         darkAverage *= 100;
         for (int j = 0; j < normalFingerprins.Count; j++)
         {
-          var image = ImageHelper.LoadImage(pathToDb + normalFingerprins[j] + ".tif");
+            var image = ImageHelper.LoadImage(Constants.PathToDb + normalFingerprins[j] + ".tif");
           normalAverage += QualityHelper.GetDarkness(image);
         }
         normalAverage /= normalFingerprins.Count;
@@ -183,21 +185,35 @@ namespace Fuzzy1
       {
         for (int j = 1; j < 9; j++)
         {
-          var image = ImageHelper.LoadImage(pathToDb + i + "_" + j + ".tif");
+          var image = ImageHelper.LoadImage(Constants.PathToDb + i + "_" + j + ".tif");
           int[,] nfiqMask =
-       QualityHelper.GetQualityMap(pathToDb + i + "_" + j + ".tif");
+       QualityHelper.GetQualityMap(Constants.PathToDb + i + "_" + j + ".tif");
           double nfiqBadReg = QualityHelper.GetLowQualityBlocksNfiq(nfiqMask);
           double nfiqQuality = QualityHelper.GetAverageQualityNfiq(nfiqMask);
           double darkness = QualityHelper.GetDarkness(image);
           double background = QualityHelper.GetBackgroundPercentage(image);
           string str = String.Format("{0} {1} {2} {3} {4} {5}\n", i, j, nfiqBadReg, nfiqQuality, darkness, background);
-          File.AppendAllText(@"D:\qualityTest1.txt", str);
+          File.AppendAllText(Constants.qualityDb+"qualityTest2.txt", str);
 
         }
       }
       w.Stop();
-      File.AppendAllText(@"D:\qualityTest1.txt", w.ElapsedMilliseconds.ToString());
+      //File.AppendAllText(@"D:\qualityTest1.txt", w.ElapsedMilliseconds.ToString());
 
+    }
+
+    private static void OneFingerQualityTest() 
+    {
+        int i = 88;
+        int j = 3;
+        var image = ImageHelper.LoadImage(Constants.PathToDb + i + "_" + j + ".tif");
+        int[,] nfiqMask =
+     QualityHelper.GetQualityMap(Constants.PathToDb + i + "_" + j + ".tif");
+        double nfiqBadReg = QualityHelper.GetLowQualityBlocksNfiq(nfiqMask);
+        double nfiqQuality = QualityHelper.GetAverageQualityNfiq(nfiqMask);
+        double darkness = QualityHelper.GetDarkness(image);
+        double background = QualityHelper.GetBackgroundPercentage(image);
+        i++;
     }
   }
 }

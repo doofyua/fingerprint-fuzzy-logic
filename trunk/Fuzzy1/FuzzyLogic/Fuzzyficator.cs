@@ -114,23 +114,23 @@ namespace Fuzzy1
     }
     private static double LittleLowQualityBlocksFunction(double x)
     {
-      if (x < 18)
+      if (x < 22)
       {
         return 1;
       }
-      if (x >= 18 && x < 26)
+      if (x >= 22 && x < 26)
       {
-        return 3*Math.Sqrt(Math.PI*2) * Gaussian.Gaussian1D((x - 18),3);
+        return 3*Math.Sqrt(Math.PI*2) * Gaussian.Gaussian1D((x - 22),3);
       }
       return 0;
     }
     private static double ManyLowQualityBlocksFunction(double x)
     {
-      if (x < 18)
+      if (x < 22)
       {
         return 0;
       }
-      if (x >= 18 && x < 25)
+      if (x >= 22 && x < 25)
       {
           return 3 * Math.Sqrt(Math.PI * 2) * Gaussian.Gaussian1D(-x + 25, 3);
       }
@@ -168,7 +168,7 @@ namespace Fuzzy1
       }
       else
       {
-        return Math.Pow(4, (x - 2.5));
+        return Math.Pow(3, (x - 2.5));
       }
     }
 

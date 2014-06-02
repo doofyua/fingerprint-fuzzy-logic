@@ -86,13 +86,13 @@ namespace Fuzzy1
 
             DecisionMaker decisionMaker = new DecisionMaker();
             QualityHelper qhelper = new QualityHelper();
-
+            DbHelper dbHelper = new DbHelper();
             Dictionary<int, List<Tuple<string, string, string>>> fpForMatchDictionary = new Dictionary<int, List<Tuple<string, string, string>>>();
             Dictionary<int, int> BestFp = new Dictionary<int, int>();
 
             for (int j = 1; j < 101; j += step)
             {
-                var newFpForMatch = DbHelper.GetTestingFingerprintDiff(j);
+                var newFpForMatch = dbHelper.GetTestingFingerprintDiff(j);
                 fpForMatchDictionary.Add(j, newFpForMatch);
 
                 int bestFp = DbHelper.GetBestFingerprint(j);
@@ -214,13 +214,13 @@ namespace Fuzzy1
 
             DecisionMaker decisionMaker = new DecisionMaker();
             QualityHelper qhelper = new QualityHelper();
-
+            DbHelper dbHelper = new DbHelper();
             Dictionary<int, List<Tuple<string, string, string>>> fpForMatchDictionary = new Dictionary<int, List<Tuple<string, string, string>>>();
             Dictionary<int, int> BestFp = new Dictionary<int, int>();
 
             for (int j = 1; j < 101; j += step)
             {
-                var newFpForMatch = DbHelper.GetTestingFingerprintDiff(j);
+                var newFpForMatch = dbHelper.GetTestingFingerprintDiff(j);
                 fpForMatchDictionary.Add(j, newFpForMatch);
 
                 int bestFp = DbHelper.GetBestFingerprint(j);
@@ -334,13 +334,13 @@ namespace Fuzzy1
 
             DecisionMaker decisionMaker = new DecisionMaker();
             QualityHelper qhelper = new QualityHelper();
-
+            DbHelper dbHelper = new DbHelper();
             Dictionary<int, List<Tuple<string, string, string>>> fpForMatchDictionary = new Dictionary<int, List<Tuple<string, string, string>>>();
             Dictionary<int, int> BestFp = new Dictionary<int, int>();
 
             for (int j = 1; j < 101; j += step)
             {
-                var newFpForMatch = DbHelper.GetTestingFingerprintDiff(j);
+                var newFpForMatch = dbHelper.GetTestingFingerprintDiff(j);
                 fpForMatchDictionary.Add(j, newFpForMatch);
 
                 int bestFp = DbHelper.GetBestFingerprint(j);
@@ -465,13 +465,13 @@ namespace Fuzzy1
 
             DecisionMaker decisionMaker = new DecisionMaker();
             QualityHelper qhelper = new QualityHelper();
-
+            DbHelper dbHelper = new DbHelper();
             Dictionary<int, List<Tuple<string, string, string>>> fpForMatchDictionary = new Dictionary<int, List<Tuple<string, string, string>>>();
             Dictionary<int, int> BestFp = new Dictionary<int, int>();
 
             for (int j = 1; j < 101; j += step)
             {
-                var newFpForMatch = DbHelper.GetTestingFingerprintDiff(j);
+                var newFpForMatch = dbHelper.GetTestingFingerprintDiff(j);
                 fpForMatchDictionary.Add(j, newFpForMatch);
 
                 int bestFp = DbHelper.GetBestFingerprint(j);
